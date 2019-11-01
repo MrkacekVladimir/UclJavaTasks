@@ -4,6 +4,7 @@ import cz.ucl.ui.cli.menu.Menu;
 import cz.ucl.ui.cli.menu.MenuOption;
 import cz.ucl.ui.definition.IUserInterface;
 import cz.ucl.ui.definition.menu.IMenu;
+import cz.ucl.ui.definition.menu.MenuType;
 
 public class MainMenu extends Menu {
     public MainMenu(IUserInterface ui, String title) {
@@ -27,5 +28,15 @@ public class MainMenu extends Menu {
         addOption(new MenuOption(nextOptionNumber(), loginMenu));
         addOption(new MenuOption(nextOptionNumber(), registerMenu));
         addOption(new MenuOption(nextOptionNumber(), quitMenu));
+    }
+
+    @Override
+    public boolean isSystemMenu() {
+        return false;
+    }
+
+    @Override
+    public MenuType getType() {
+        return MenuType.USER;
     }
 }

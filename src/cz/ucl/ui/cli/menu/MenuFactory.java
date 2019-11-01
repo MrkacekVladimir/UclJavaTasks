@@ -9,6 +9,7 @@ import cz.ucl.ui.definition.IUserInterface;
 import cz.ucl.ui.definition.forms.FormFieldType;
 import cz.ucl.ui.definition.menu.IMenu;
 import cz.ucl.ui.definition.menu.IMenuFactory;
+import cz.ucl.ui.definition.menu.MenuType;
 
 public class MenuFactory implements IMenuFactory {
     @Override
@@ -35,6 +36,16 @@ public class MenuFactory implements IMenuFactory {
     public IMenu createLoginFormMenu(IMenu parentMenu) {
         return new FormMenu(parentMenu, "login", "Přihlásit se") {
             @Override
+            public boolean isSystemMenu() {
+                return true;
+            }
+
+            @Override
+            public MenuType getType() {
+                return MenuType.SYSTEM_FILL_FORM;
+            }
+
+            @Override
             protected void defineForm() {
                 addFormField(new FormField("email", "E-Mail", FormFieldType.TEXTUAL));
                 addFormField(new FormField("password", "Heslo", FormFieldType.SECURE));
@@ -56,6 +67,16 @@ public class MenuFactory implements IMenuFactory {
     @Override
     public IMenu createRegistrationFormMenu(IMenu parentMenu) {
         return new FormMenu(parentMenu, "register", "Registrovat se") {
+            @Override
+            public boolean isSystemMenu() {
+                return true;
+            }
+
+            @Override
+            public MenuType getType() {
+                return MenuType.SYSTEM_FILL_FORM;
+            }
+
             @Override
             protected void defineForm() {
                 addFormField(new FormField("email", "E-Mail", FormFieldType.TEXTUAL));

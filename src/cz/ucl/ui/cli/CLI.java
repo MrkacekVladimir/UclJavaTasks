@@ -15,6 +15,7 @@ import cz.ucl.ui.definition.menu.IMenuOption;
 import cz.ucl.ui.definition.menu.MenuType;
 import cz.ucl.ui.definition.views.*;
 
+import javax.swing.text.html.FormView;
 import java.io.Console;
 import java.util.*;
 import java.util.stream.IntStream;
@@ -32,11 +33,11 @@ public class CLI implements ICLI {
     public CLI() {
         menuFactory = new MenuFactory();
 
-        categoryView = new CategoryView();
-        tagView = new TagView();
-        taskView = new TaskView();
-        menuView = new MenuView();
-        formView = new FormView();
+        categoryView = this.getCategoryView();
+        tagView = this.getTagView();
+        taskView = this.getTaskView();
+        menuView = this.getMenuView();
+        formView = this.getFormView();
     }
 
     @Override
@@ -54,6 +55,16 @@ public class CLI implements ICLI {
             nextMenu = handleMenu(currentMenu);
         }
         while (nextMenu != null);
+    }
+
+    @Override
+    public IAppLogic getLogic() {
+        return this.logic;
+    }
+
+    @Override
+    public IMenuFactory getMenuFactory() {
+        return this.menuFactory;
     }
 
     //region Forms
@@ -109,6 +120,41 @@ public class CLI implements ICLI {
             actionDashboard(fromMenu);
         }
         // TODO
+    }
+
+    @Override
+    public IMenu getMainMenu() {
+        return this.menuFactory.createMainMenu(this);
+    }
+
+    @Override
+    public String getWelcomeText() {
+        return "Vítejte v aplikaci Úkolovník 1.0!";
+    }
+
+    @Override
+    public ICategoryView getCategoryView() {
+        return null;
+    }
+
+    @Override
+    public ITagView getTagView() {
+        return null;
+    }
+
+    @Override
+    public ITaskView getTaskView() {
+        return null;
+    }
+
+    @Override
+    public IFormView getFormView() {
+        return null;
+    }
+
+    @Override
+    public IMenuView getMenuView() {
+        return null;
     }
     //endregion
 

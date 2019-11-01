@@ -22,7 +22,15 @@ public class FormManager implements IFormManager {
         this.data = new HashMap<>();
     }
 
-    // TODO
+    @Override
+    public IForm getForm() {
+        return this.form;
+    }
+
+    @Override
+    public IUserInterface getUserInterface() {
+        return this.ui;
+    }
 
     @Override
     public Map<String, String> processForm() {
@@ -60,5 +68,20 @@ public class FormManager implements IFormManager {
                 isValid = false;
             }
         } while (!isValid);
+    }
+
+    @Override
+    public int processNumericalInput(int userInput, IFormField formField) throws UnsupportedInputTypeException, InvalidFieldValueException {
+        return 0;
+    }
+
+    @Override
+    public String processTextualInput(String userInput, IFormField formField) throws UnsupportedInputTypeException, InvalidFieldValueException {
+        return null;
+    }
+
+    @Override
+    public String processSecureInput(String userInput, IFormField formField) throws UnsupportedInputTypeException, InvalidFieldValueException {
+        return null;
     }
 }

@@ -6,11 +6,13 @@ import cz.ucl.ui.definition.IUserInterface;
 import cz.ucl.ui.definition.forms.IForm;
 import cz.ucl.ui.definition.forms.IFormField;
 import cz.ucl.ui.definition.menu.IMenu;
+import cz.ucl.ui.definition.menu.IMenuFactory;
 import cz.ucl.ui.definition.menu.IMenuOption;
 import cz.ucl.ui.definition.menu.MenuType;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.swing.text.html.Option;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public abstract class Menu implements IMenu {
     private String identifier;
@@ -43,12 +45,103 @@ public abstract class Menu implements IMenu {
     protected abstract void build();
 
     @Override
+    public String getIdentifier() {
+        return this.identifier;
+    }
+
+    @Override
+    public String getTitle() {
+        return this.title;
+    }
+
+    @Override
+    public String getDescription() {
+        return this.description;
+    }
+
+    @Override
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public IMenu getParentMenu() {
+        return this.parentMenu;
+    }
+
+    @Override
+    public IMenuOption[] getOptions() {
+        IMenuOption[] arr = new IMenuOption[this.options.size()];
+        return this.options.toArray(arr);
+    }
+
+    @Override
+    public int[] getValidOptionNumbers() {
+        return this.options.stream().map(IMenuOption::getNumber).mapToInt(Number::intValue).toArray();
+    }
+
+    @Override
+    public IMenuOption getOptionForNumber(int optionNumber) {
+        return this.options.stream().filter( o -> o.getNumber() == optionNumber ).findFirst().get();
+    }
+
+    @Override
+    public void addOption(IMenuOption option) {
+        this.options.add(option);
+    }
+
+    @Override
+    public int nextOptionNumber() {
+        OptionalInt maxInteger = Arrays.stream(this.getValidOptionNumbers()).max();
+        if(maxInteger.isPresent())
+            return maxInteger.getAsInt();
+
+        return 1;
+    }
+
+    @Override
     public void initialize() {
         if (!isBuilt) {
             build();
             isBuilt = true;
         }
     }
+
+    @Override
+    public String render() {
+        return "";
+    }
+
+    @Override
+    public IAppLogic getLogic() {
+        return this.logic;
+    }
+
+    @Override
+    public IUserInterface getParentInterface() {
+        return this.ui;
+    }
+
+    @Override
+    public IFormField[] getFormFields() {
+        return this.form.getFormFields();
+    }
+
+    @Override
+    public void addFormField(IFormField field) {
+        this.form.addFormField(field);
+    }
+
+    @Override
+    public String renderFormField(IFormField formField) {
+        return this.form.renderFormField(formField);
+    }
+
+    @Override
+    public boolean isForm() {
+        return this.form.isForm();
+    }
+
 
     // TODO
 }
