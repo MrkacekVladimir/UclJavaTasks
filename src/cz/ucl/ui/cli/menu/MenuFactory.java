@@ -42,7 +42,7 @@ public class MenuFactory implements IMenuFactory {
 
             @Override
             public MenuType getType() {
-                return MenuType.SYSTEM_FILL_FORM;
+                return MenuType.USER;
             }
 
             @Override
@@ -74,7 +74,7 @@ public class MenuFactory implements IMenuFactory {
 
             @Override
             public MenuType getType() {
-                return MenuType.SYSTEM_FILL_FORM;
+                return MenuType.USER;
             }
 
             @Override

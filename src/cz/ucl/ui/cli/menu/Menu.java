@@ -15,6 +15,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public abstract class Menu implements IMenu {
+
     private String identifier;
     private String title;
     private String description;
@@ -41,7 +42,9 @@ public abstract class Menu implements IMenu {
         this.isBuilt = false;
     }
 
-    /** This method should be used for building the menu - setting description, adding options, etc */
+    /**
+     * This method should be used for building the menu - setting description, adding options, etc
+     */
     protected abstract void build();
 
     @Override
@@ -82,7 +85,7 @@ public abstract class Menu implements IMenu {
 
     @Override
     public IMenuOption getOptionForNumber(int optionNumber) {
-        return this.options.stream().filter( o -> o.getNumber() == optionNumber ).findFirst().get();
+        return this.options.stream().filter(o -> o.getNumber() == optionNumber).findFirst().get();
     }
 
     @Override
@@ -93,8 +96,8 @@ public abstract class Menu implements IMenu {
     @Override
     public int nextOptionNumber() {
         OptionalInt maxInteger = Arrays.stream(this.getValidOptionNumbers()).max();
-        if(maxInteger.isPresent())
-            return maxInteger.getAsInt();
+        if (maxInteger.isPresent())
+            return maxInteger.getAsInt() + 1;
 
         return 1;
     }
@@ -109,7 +112,19 @@ public abstract class Menu implements IMenu {
 
     @Override
     public String render() {
-        return "";
+        StringBuilder builder = new StringBuilder();
+
+        builder.append(this.getTitle());
+
+
+        for( IMenuOption option : this.options ){
+            builder.append(option.getNumber());
+            builder.append(". ");
+            builder.append(option.getTitle());
+            builder.append(System.getProperty("line.separator"));
+        }
+
+        return builder.toString();
     }
 
     @Override
@@ -120,6 +135,11 @@ public abstract class Menu implements IMenu {
     @Override
     public IUserInterface getParentInterface() {
         return this.ui;
+    }
+
+    @Override
+    public boolean isSystemMenu() {
+         return this.getType() != MenuType.USER;
     }
 
     @Override
@@ -141,7 +161,4 @@ public abstract class Menu implements IMenu {
     public boolean isForm() {
         return this.form.isForm();
     }
-
-
-    // TODO
 }

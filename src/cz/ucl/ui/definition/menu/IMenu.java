@@ -15,7 +15,7 @@ import cz.ucl.ui.definition.forms.IForm;
  * When IMenu's getFormFields() returns empty array, the IMenu is not considered as form
  *
  * The form part of IMenu is always shown first (by this IUserInterface), followed by the IMenuOption listing.
- * From the options listing user either chooses next IMenu (via IMenuOption) or exists the app.
+ * From the options listing user either chooses next IMenu (via IMenuOption) or exits the app.
  */
 public interface IMenu extends IForm {
     /** Returns system identifier of the menu (eg. "login"). Identifiers should be lowercase and underscore_case */

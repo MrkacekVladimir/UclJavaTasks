@@ -2,17 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66d07a86-e330-4b9a-b88c-2cb0318036bb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/Tag.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/Task.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/menu/MenuOption.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/views/CategoryView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/views/TagView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/views/TaskView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tasks/META-INF/Tasks.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/cli/CLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/CLI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/cli/forms/FormManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/forms/FormManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/cli/forms/Form.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/forms/Form.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/cli/forms/FormField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/forms/FormField.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/cli/menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/menu/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/cli/menu/MenuFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/menu/MenuFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/cli/menu/user/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/menu/user/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/definition/menu/IMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/definition/menu/IMenu.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,7 +50,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
@@ -115,7 +114,7 @@
       <workItem from="1572050734757" duration="25800000" />
       <workItem from="1572099052702" duration="3307000" />
       <workItem from="1572587740875" duration="559000" />
-      <workItem from="1572589313793" duration="4426000" />
+      <workItem from="1572589313793" duration="9255000" />
     </task>
     <task id="LOCAL-00001" summary="Added idea files">
       <created>1572587873021</created>
@@ -131,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572591525287</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added entities and some implementation of Menu specific classes">
+      <created>1572595713321</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1572595713321</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,6 +161,7 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Added idea files" />
     <MESSAGE value="Implemented facade" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented facade" />
+    <MESSAGE value="Added entities and some implementation of Menu specific classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added entities and some implementation of Menu specific classes" />
   </component>
 </project>

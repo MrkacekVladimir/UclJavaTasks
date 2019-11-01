@@ -44,7 +44,7 @@ public class CLI implements ICLI {
     public void run(IAppLogic logic) {
         this.logic = logic;
 
-        drawMessage(getWelcomeText());
+        drawOutput(getWelcomeText());
 
         IMenu currentMenu;
         IMenu nextMenu = getMainMenu();
@@ -203,6 +203,10 @@ public class CLI implements ICLI {
         }
     }
 
+    private IMenuOption handleOptions(IMenu menu){
+        return null;
+    }
+
     private IMenu handleMenuForOption(IMenu currentMenu, IMenuOption selectedOption) {
         IMenu nextMenu = selectedOption.getMenu();
 
@@ -227,7 +231,9 @@ public class CLI implements ICLI {
         return nextMenu;
     }
 
-    // TODO
+    private IMenu handleUserMenuChange(IMenu currentMenu, IMenu nextMenu) {
+        return nextMenu;
+    }
 
     private IMenu handleSystemMenuChange(IMenu currentMenu, IMenu nextMenu) {
         if (nextMenu.getType() == MenuType.SYSTEM_BACK) {
@@ -246,6 +252,10 @@ public class CLI implements ICLI {
         return nextMenu;
     }
 
+    private Map<String, String> handleForm(IMenu menu){
+        //TODO
+        return null;
+    }
     // TODO
 
     //endregion
