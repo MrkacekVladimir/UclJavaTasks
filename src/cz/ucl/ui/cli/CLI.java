@@ -134,17 +134,17 @@ public class CLI implements ICLI {
 
     @Override
     public ICategoryView getCategoryView() {
-        return null;
+        return new CategoryView();
     }
 
     @Override
     public ITagView getTagView() {
-        return null;
+        return new TagView();
     }
 
     @Override
     public ITaskView getTaskView() {
-        return null;
+        return new TaskView();
     }
 
     @Override
