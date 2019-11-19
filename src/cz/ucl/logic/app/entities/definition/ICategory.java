@@ -7,9 +7,8 @@ public interface ICategory extends ITaskOwner {
     IUser getUser();
     String getTitle();
     Color getColor();
-
-    // see ITaskOwner
-
     LocalDateTime getCreatedAt();
     LocalDateTime getUpdatedAt();
+    // see ITaskOwner
+
 }

@@ -18,7 +18,7 @@ public class TaskListMenu extends Menu {
 
     @Override
     protected void build() {
-        setDescription(this.getTitle());
+        setDescription("Všechny úkoly");
 
         String formattedTasks = this.ui.getTaskView().formatTaskList(this.tasks);
         this.ui.drawOutput(formattedTasks);

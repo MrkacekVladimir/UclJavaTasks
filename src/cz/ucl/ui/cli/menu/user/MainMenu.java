@@ -17,12 +17,18 @@ public class MainMenu extends Menu {
 
     @Override
     protected void build() {
+        this.clearOptions();
         boolean isLoggedIn = this.logic.isUserLoggedIn();
-        if(isLoggedIn){
+        if (isLoggedIn) {
             this.buildLoggedInMenu();
         } else {
             this.buildNotLoggedInMenu();
         }
+    }
+
+    @Override
+    public void initialize() {
+        this.build();
     }
 
     @Override
@@ -35,7 +41,7 @@ public class MainMenu extends Menu {
         return MenuType.USER;
     }
 
-    private void buildNotLoggedInMenu(){
+    private void buildNotLoggedInMenu() {
         setDescription(
                 "Abyste mohli aplikaci používat, je nutné se nejprve přihlásit.\n\n" +
                         "Pokud ještě nemáte svůj uživatelský účet, je možné se registrovat."
@@ -49,15 +55,19 @@ public class MainMenu extends Menu {
         addOption(new MenuOption(nextOptionNumber(), registerMenu));
         addOption(new MenuOption(nextOptionNumber(), quitMenu));
     }
-    private void buildLoggedInMenu(){
+
+    private void buildLoggedInMenu() {
 
         setDescription("Jste úspěšně přihlášen.");
 
         ITask[] allTasks = logic.getAllTasks();
         IMenu allTasksMenu = ui.getMenuFactory().createTaskListMenu(this, allTasks, "Zobrazit všechny úkoly.");
 
+        IMenu logoutMenu = ui.getMenuFactory().createLogoutMenu(this);
         IMenu quitMenu = ui.getMenuFactory().createQuitMenu(this);
 
+        addOption(new MenuOption(nextOptionNumber(), allTasksMenu));
+        addOption(new MenuOption(nextOptionNumber(), logoutMenu));
         addOption(new MenuOption(nextOptionNumber(), quitMenu));
     }
 }

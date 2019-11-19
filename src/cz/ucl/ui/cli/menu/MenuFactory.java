@@ -4,6 +4,7 @@ import cz.ucl.logic.app.entities.definition.ITask;
 import cz.ucl.ui.cli.forms.FormField;
 import cz.ucl.ui.cli.menu.system.BackMenu;
 import cz.ucl.ui.cli.menu.system.FillFormMenu;
+import cz.ucl.ui.cli.menu.system.LogoutMenu;
 import cz.ucl.ui.cli.menu.system.QuitMenu;
 import cz.ucl.ui.cli.menu.user.MainMenu;
 import cz.ucl.ui.cli.menu.user.TaskListMenu;
@@ -89,6 +90,11 @@ public class MenuFactory implements IMenuFactory {
                 addOption(new MenuOption(nextOptionNumber(), fillMenu));
             }
         };
+    }
+
+    @Override
+    public IMenu createLogoutMenu(IMenu parentMenu) {
+        return new LogoutMenu(parentMenu, "Odhlásit se");
     }
 
     @Override

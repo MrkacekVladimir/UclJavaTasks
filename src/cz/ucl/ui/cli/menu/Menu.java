@@ -48,6 +48,10 @@ public abstract class Menu implements IMenu {
      */
     protected abstract void build();
 
+    protected void clearOptions(){
+        this.options.clear();
+    }
+
     @Override
     public String getIdentifier() {
         return this.identifier;

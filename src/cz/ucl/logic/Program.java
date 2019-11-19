@@ -15,12 +15,13 @@ import cz.ucl.logic.exceptions.EmailAddressAlreadyUsedException;
 import cz.ucl.logic.exceptions.InvalidCredentialsException;
 import cz.ucl.logic.exceptions.NotLoggedInException;
 
-/** This class HAS to honor the Facade design pattern!
- *
- *  No direct functionality should be present!
- *  All functionality should be delegated to service classes
- *
- *  All xxxService attributes have to be private!
+/**
+ * This class HAS to honor the Facade design pattern!
+ * <p>
+ * No direct functionality should be present!
+ * All functionality should be delegated to service classes
+ * <p>
+ * All xxxService attributes have to be private!
  */
 public class Program implements IAppLogic {
     private ICategoryService categoryService;
@@ -37,7 +38,11 @@ public class Program implements IAppLogic {
 
     @Override
     public void generateMockData() {
+        try {
+            this.userService.registerUser("test", "test", "test");
+        } catch (Exception e) {
 
+        }
     }
 
     //region ICategoryService

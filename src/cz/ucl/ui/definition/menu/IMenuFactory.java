@@ -11,5 +11,7 @@ public interface IMenuFactory {
 
     IMenu createLoginFormMenu(IMenu parentMenu);
     IMenu createRegistrationFormMenu(IMenu parentMenu);
+    IMenu createLogoutMenu(IMenu parentMenu);
+
     IMenu createTaskListMenu(IMenu parentMenu, ITask[] tasks, String title);
 }

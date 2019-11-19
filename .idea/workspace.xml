@@ -2,10 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66d07a86-e330-4b9a-b88c-2cb0318036bb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/data/mappers/CategoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/mappers/CategoryMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/data/mappers/TagMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/mappers/TagMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/data/mappers/TaskMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/mappers/TaskMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/data/mappers/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/mappers/UserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/menu/system/LogoutMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/Program.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/definition/ICategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/definition/ICategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/data/dao/CategoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/dao/CategoryDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/cli/CLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/CLI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/cli/menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/menu/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/cli/menu/MenuFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/menu/MenuFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/cli/menu/user/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/menu/user/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/cli/menu/user/TaskListMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/menu/user/TaskListMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/definition/menu/IMenuFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/definition/menu/IMenuFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/definition/menu/MenuType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/definition/menu/MenuType.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -110,7 +119,7 @@
       <workItem from="1572587740875" duration="559000" />
       <workItem from="1572589313793" duration="9305000" />
       <workItem from="1572773572163" duration="24000" />
-      <workItem from="1574086022005" duration="19559000" />
+      <workItem from="1574086022005" duration="23262000" />
     </task>
     <task id="LOCAL-00001" summary="Added idea files">
       <created>1572587873021</created>
@@ -196,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574164831981</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added setup for method without deepcloning">
+      <created>1574165149333</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1574165149333</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,7 +246,8 @@
     <MESSAGE value="Changes to UI logic" />
     <MESSAGE value="Changes to UserService" />
     <MESSAGE value="Generated methods from interfaces in Mappers" />
-    <option name="LAST_COMMIT_MESSAGE" value="Generated methods from interfaces in Mappers" />
+    <MESSAGE value="Added setup for method without deepcloning" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added setup for method without deepcloning" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -239,6 +256,11 @@
           <url>file://$PROJECT_DIR$/src/cz/ucl/ui/definition/forms/IFormField.java</url>
           <line>3</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/cz/ucl/ui/cli/CLI.java</url>
+          <line>126</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -3,6 +3,7 @@ package cz.ucl.ui.cli;
 import cz.ucl.logic.exceptions.AlreadyLoggedInException;
 import cz.ucl.logic.exceptions.EmailAddressAlreadyUsedException;
 import cz.ucl.logic.exceptions.InvalidCredentialsException;
+import cz.ucl.logic.exceptions.NotLoggedInException;
 import cz.ucl.ui.cli.forms.FormManager;
 import cz.ucl.ui.cli.menu.MenuFactory;
 import cz.ucl.ui.cli.views.*;
@@ -100,9 +101,9 @@ public class CLI implements ICLI {
     @Override
     public int promptOption(IMenu menu) {
         int[] validOptions = menu.getValidOptionNumbers();
-        while(true){
+        while (true) {
             int input = this.promptNumber();
-            if(this.isValidOption(input, validOptions)){
+            if (this.isValidOption(input, validOptions)) {
                 return input;
             }
 
@@ -113,18 +114,23 @@ public class CLI implements ICLI {
 
     //region Logic
     public void invokeAppLogic(IMenu fromMenu, Map<String, String> formData) {
-        if (fromMenu.getIdentifier().equals("login")) {
+        String identifier = fromMenu.getIdentifier();
+        if (identifier.equals("login")) {
             actionLogin(fromMenu, formData);
-        } else if (fromMenu.getIdentifier().equals("register")) {
+        } else if (identifier.equals("register")) {
             actionRegister(fromMenu, formData);
         }
         // TODO
     }
 
     public void invokeAppLogic(IMenu fromMenu) {
-        if (fromMenu.getIdentifier().equals("main_menu")) {
+        String identifier = fromMenu.getIdentifier();
+        if (identifier.equals("main_menu")) {
             actionDashboard(fromMenu);
+        } else if (identifier.equals("logout")) {
+            actionLogout(fromMenu);
         }
+
         // TODO
     }
 
@@ -154,7 +160,9 @@ public class CLI implements ICLI {
     }
 
     @Override
-    public IFormView getFormView() { return this.formView;}
+    public IFormView getFormView() {
+        return this.formView;
+    }
 
     @Override
     public IMenuView getMenuView() {
@@ -166,6 +174,20 @@ public class CLI implements ICLI {
     private void actionDashboard(IMenu fromMenu) {
         if (logic.isUserLoggedIn()) {
             drawMessage("Jste přihlášen jako: " + logic.getUserLoggedIn().getUsername());
+        } else {
+            drawMessage("Nejste přihlášen");
+        }
+    }
+
+    private void actionLogout(IMenu fromMenu) {
+        if (logic.isUserLoggedIn()) {
+            try {
+                this.logic.logoutUser();
+            } catch (NotLoggedInException e) {
+                //This should never happen because we are checking if user is logged in before calling logout.
+                e.printStackTrace();
+            }
+            drawMessage("Odhlášení proběhlo úspěšně.");
         } else {
             drawMessage("Nejste přihlášen");
         }
@@ -248,6 +270,9 @@ public class CLI implements ICLI {
             Map<String, String> formData = handleForm(currentMenu);
             invokeAppLogic(currentMenu, formData);
             nextMenu = currentMenu.getParentMenu();
+        } else if (nextMenu.getType() == MenuType.SYSTEM_LOGOUT) {
+            invokeAppLogic(nextMenu);
+            nextMenu = nextMenu.getParentMenu();
         } else if (nextMenu.getType() == MenuType.SYSTEM_QUIT) {
             // we will close the application with status code 0 (OK) instead of rendering the menu
             System.exit(0);
@@ -261,7 +286,6 @@ public class CLI implements ICLI {
     private Map<String, String> handleForm(IMenu menu) {
         return this.createFormManagerForMenu(menu).processForm();
     }
-    // TODO
 
     //endregion
 
