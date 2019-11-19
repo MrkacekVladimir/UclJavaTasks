@@ -5,12 +5,21 @@ import cz.ucl.logic.app.entities.definition.ITag;
 import cz.ucl.logic.app.entities.definition.ITask;
 import cz.ucl.logic.app.entities.definition.IUser;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
+
 public class User implements IUser {
 
-    private int identifier;
+    //region Attributes
+    private int id;
     private String email;
-    private String password;
     private String username;
+    private String password;
+    private List<ICategory> categories;
+    private List<ITask> tasks;
+    private List<ITag> tags;
+    //endregion
 
     public User(String email, String username, String password ){
         this.email = email;
@@ -86,6 +95,16 @@ public class User implements IUser {
     @Override
     public int tagsCount() {
         return 0;
+    }
+
+    @Override
+    public LocalDateTime getCreatedAt() {
+        return null;
+    }
+
+    @Override
+    public LocalDateTime getUpdatedAt() {
+        return null;
     }
 
     @Override

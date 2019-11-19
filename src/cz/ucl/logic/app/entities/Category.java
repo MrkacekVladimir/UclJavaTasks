@@ -5,6 +5,8 @@ import cz.ucl.logic.app.entities.definition.ICategory;
 import cz.ucl.logic.app.entities.definition.ITask;
 import cz.ucl.logic.app.entities.definition.IUser;
 
+import java.time.LocalDateTime;
+
 public class Category implements ICategory {
     @Override
     public int getId() {
@@ -23,6 +25,16 @@ public class Category implements ICategory {
 
     @Override
     public Color getColor() {
+        return null;
+    }
+
+    @Override
+    public LocalDateTime getCreatedAt() {
+        return null;
+    }
+
+    @Override
+    public LocalDateTime getUpdatedAt() {
         return null;
     }
 

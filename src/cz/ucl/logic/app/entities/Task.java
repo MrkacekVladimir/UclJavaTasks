@@ -5,47 +5,69 @@ import cz.ucl.logic.app.entities.definition.ITag;
 import cz.ucl.logic.app.entities.definition.ITask;
 import cz.ucl.logic.app.entities.definition.IUser;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.List;
 
 public class Task implements ITask {
+
+    //region Attributes
+    private int id;
+    private IUser user;
+    private String title;
+    private String note;
+    private boolean isDone;
+    private ICategory category;
+    private List<ITag> tags;
+    private LocalDateTime dueDate;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+    //endregion
+
+    //region Getters
+
     @Override
     public int getId() {
-        return 0;
+        return id;
     }
 
     @Override
     public String getTitle() {
-        return null;
+        return title;
     }
 
     @Override
     public String getNote() {
-        return null;
+        return note;
     }
 
     @Override
     public IUser getUser() {
-        return null;
+        return user;
     }
 
     @Override
     public boolean isDone() {
-        return false;
+        return isDone;
     }
 
     @Override
     public ICategory getCategory() {
-        return null;
+        return category;
     }
 
     @Override
-    public Date getCreatedAt() {
-        return null;
+    public LocalDateTime getDueDate() {
+        return dueDate;
     }
 
     @Override
-    public Date getUpdatedAt() {
-        return null;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    @Override
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
     }
 
     @Override
@@ -57,6 +79,8 @@ public class Task implements ITask {
     public ITag getTag(int i) {
         return null;
     }
+
+    //endregion
 
     @Override
     public void saveTag(int i, ITag tag) {
