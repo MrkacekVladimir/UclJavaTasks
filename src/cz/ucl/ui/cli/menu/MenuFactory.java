@@ -1,10 +1,12 @@
 package cz.ucl.ui.cli.menu;
 
+import cz.ucl.logic.app.entities.definition.ITask;
 import cz.ucl.ui.cli.forms.FormField;
 import cz.ucl.ui.cli.menu.system.BackMenu;
 import cz.ucl.ui.cli.menu.system.FillFormMenu;
 import cz.ucl.ui.cli.menu.system.QuitMenu;
 import cz.ucl.ui.cli.menu.user.MainMenu;
+import cz.ucl.ui.cli.menu.user.TaskListMenu;
 import cz.ucl.ui.definition.IUserInterface;
 import cz.ucl.ui.definition.forms.FormFieldType;
 import cz.ucl.ui.definition.menu.IMenu;
@@ -35,10 +37,6 @@ public class MenuFactory implements IMenuFactory {
     @Override
     public IMenu createLoginFormMenu(IMenu parentMenu) {
         return new FormMenu(parentMenu, "login", "Přihlásit se") {
-            @Override
-            public boolean isSystemMenu() {
-                return true;
-            }
 
             @Override
             public MenuType getType() {
@@ -67,10 +65,6 @@ public class MenuFactory implements IMenuFactory {
     @Override
     public IMenu createRegistrationFormMenu(IMenu parentMenu) {
         return new FormMenu(parentMenu, "register", "Registrovat se") {
-            @Override
-            public boolean isSystemMenu() {
-                return true;
-            }
 
             @Override
             public MenuType getType() {
@@ -95,6 +89,11 @@ public class MenuFactory implements IMenuFactory {
                 addOption(new MenuOption(nextOptionNumber(), fillMenu));
             }
         };
+    }
+
+    @Override
+    public IMenu createTaskListMenu(IMenu parentMenu, ITask[] tasks, String title) {
+        return new TaskListMenu(parentMenu, tasks, "taskList", title);
     }
 
     // TODO

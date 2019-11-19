@@ -15,8 +15,6 @@ import cz.ucl.ui.definition.menu.IMenuOption;
 import cz.ucl.ui.definition.menu.MenuType;
 import cz.ucl.ui.definition.views.*;
 
-import javax.swing.*;
-import javax.swing.text.html.FormView;
 import java.io.Console;
 import java.util.*;
 import java.util.stream.IntStream;
@@ -34,11 +32,11 @@ public class CLI implements ICLI {
     public CLI() {
         menuFactory = new MenuFactory();
 
-        categoryView = this.getCategoryView();
-        tagView = this.getTagView();
-        taskView = this.getTaskView();
-        menuView = this.getMenuView();
-        formView = this.getFormView();
+        categoryView = new CategoryView();
+        tagView = new TagView();
+        taskView = new TaskView();
+        menuView = new MenuView();
+        formView = new FormView();
     }
 
     @Override
@@ -102,9 +100,8 @@ public class CLI implements ICLI {
     @Override
     public int promptOption(IMenu menu) {
         int[] validOptions = menu.getValidOptionNumbers();
-        int input = this.promptNumber();
-
         while(true){
+            int input = this.promptNumber();
             if(this.isValidOption(input, validOptions)){
                 return input;
             }
@@ -143,27 +140,25 @@ public class CLI implements ICLI {
 
     @Override
     public ICategoryView getCategoryView() {
-        return new CategoryView();
+        return this.categoryView;
     }
 
     @Override
     public ITagView getTagView() {
-        return new TagView();
+        return this.tagView;
     }
 
     @Override
     public ITaskView getTaskView() {
-        return new TaskView();
+        return this.taskView;
     }
 
     @Override
-    public IFormView getFormView() {
-        return null;
-    }
+    public IFormView getFormView() { return this.formView;}
 
     @Override
     public IMenuView getMenuView() {
-        return new MenuView();
+        return this.menuView;
     }
     //endregion
 
@@ -264,8 +259,7 @@ public class CLI implements ICLI {
     }
 
     private Map<String, String> handleForm(IMenu menu) {
-        //TODO
-        return null;
+        return this.createFormManagerForMenu(menu).processForm();
     }
     // TODO
 

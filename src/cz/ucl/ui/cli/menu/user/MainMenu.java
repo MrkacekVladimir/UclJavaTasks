@@ -1,5 +1,6 @@
 package cz.ucl.ui.cli.menu.user;
 
+import cz.ucl.logic.app.entities.definition.ITask;
 import cz.ucl.ui.cli.menu.Menu;
 import cz.ucl.ui.cli.menu.MenuOption;
 import cz.ucl.ui.definition.IUserInterface;
@@ -16,18 +17,12 @@ public class MainMenu extends Menu {
 
     @Override
     protected void build() {
-        setDescription(
-                "Abyste mohli aplikaci používat, je nutné se nejprve přihlásit.\n\n" +
-                "Pokud ještě nemáte svůj uživatelský účet, je možné se registrovat."
-        );
-
-        IMenu loginMenu = ui.getMenuFactory().createLoginFormMenu(this);
-        IMenu registerMenu = ui.getMenuFactory().createRegistrationFormMenu(this);
-        IMenu quitMenu = ui.getMenuFactory().createQuitMenu(this);
-
-        addOption(new MenuOption(nextOptionNumber(), loginMenu));
-        addOption(new MenuOption(nextOptionNumber(), registerMenu));
-        addOption(new MenuOption(nextOptionNumber(), quitMenu));
+        boolean isLoggedIn = this.logic.isUserLoggedIn();
+        if(isLoggedIn){
+            this.buildLoggedInMenu();
+        } else {
+            this.buildNotLoggedInMenu();
+        }
     }
 
     @Override
@@ -38,5 +33,31 @@ public class MainMenu extends Menu {
     @Override
     public MenuType getType() {
         return MenuType.USER;
+    }
+
+    private void buildNotLoggedInMenu(){
+        setDescription(
+                "Abyste mohli aplikaci používat, je nutné se nejprve přihlásit.\n\n" +
+                        "Pokud ještě nemáte svůj uživatelský účet, je možné se registrovat."
+        );
+
+        IMenu loginMenu = ui.getMenuFactory().createLoginFormMenu(this);
+        IMenu registerMenu = ui.getMenuFactory().createRegistrationFormMenu(this);
+        IMenu quitMenu = ui.getMenuFactory().createQuitMenu(this);
+
+        addOption(new MenuOption(nextOptionNumber(), loginMenu));
+        addOption(new MenuOption(nextOptionNumber(), registerMenu));
+        addOption(new MenuOption(nextOptionNumber(), quitMenu));
+    }
+    private void buildLoggedInMenu(){
+
+        setDescription("Jste úspěšně přihlášen.");
+
+        ITask[] allTasks = logic.getAllTasks();
+        IMenu allTasksMenu = ui.getMenuFactory().createTaskListMenu(this, allTasks, "Zobrazit všechny úkoly.");
+
+        IMenu quitMenu = ui.getMenuFactory().createQuitMenu(this);
+
+        addOption(new MenuOption(nextOptionNumber(), quitMenu));
     }
 }

@@ -1,5 +1,6 @@
 package cz.ucl.ui.definition.menu;
 
+import cz.ucl.logic.app.entities.definition.ITask;
 import cz.ucl.ui.definition.IUserInterface;
 
 public interface IMenuFactory {
@@ -10,4 +11,5 @@ public interface IMenuFactory {
 
     IMenu createLoginFormMenu(IMenu parentMenu);
     IMenu createRegistrationFormMenu(IMenu parentMenu);
+    IMenu createTaskListMenu(IMenu parentMenu, ITask[] tasks, String title);
 }

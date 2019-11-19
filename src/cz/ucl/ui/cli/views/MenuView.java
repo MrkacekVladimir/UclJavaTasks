@@ -5,7 +5,7 @@ import cz.ucl.ui.definition.menu.IMenu;
 import cz.ucl.ui.definition.menu.IMenuOption;
 import cz.ucl.ui.definition.views.IMenuView;
 
-import java.util.ArrayDeque;
+import java.util.LinkedList;
 
 public class MenuView implements IMenuView {
     @Override
@@ -54,20 +54,21 @@ public class MenuView implements IMenuView {
             return "";
         }
 
-        ArrayDeque<String> menuTitleArray = new ArrayDeque<String>();
+        LinkedList<IMenu> linkedList = new LinkedList<>();
         while (currentMenu.getParentMenu() != null) {
-            menuTitleArray.add(currentMenu.getTitle());
+            linkedList.addFirst(currentMenu);
             currentMenu = currentMenu.getParentMenu();
         }
-        menuTitleArray.add(currentMenu.getTitle());
+        linkedList.addFirst(currentMenu);
 
         StringBuilder builder = new StringBuilder();
 
-        while (menuTitleArray.peek() != null) {
-            builder.append(menuTitleArray.pop());
-            //Check if there is another menu in the queue
-            if(menuTitleArray.peek() != null){
-                builder.append(" - ");
+        while (linkedList.size() > 0 && linkedList.getFirst() != null) {
+            IMenu menu = linkedList.removeFirst();
+            builder.append(menu.getTitle());
+            //Check if there is another menu in the linkedList
+            if(linkedList.peek() != null){
+                builder.append(" > ");
             }
         }
 

@@ -8,6 +8,7 @@ import cz.ucl.ui.definition.forms.IFormManager;
 import cz.ucl.ui.exceptions.InvalidFieldValueException;
 import cz.ucl.ui.exceptions.UnsupportedInputTypeException;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,7 +35,11 @@ public class FormManager implements IFormManager {
 
     @Override
     public Map<String, String> processForm() {
-        // TODO
+        IFormField[] fields = this.form.getFormFields();
+
+        for (IFormField field : fields ) {
+            this.processField(field);
+        }
 
         return new HashMap<>(data);
     }
@@ -72,16 +77,16 @@ public class FormManager implements IFormManager {
 
     @Override
     public int processNumericalInput(int userInput, IFormField formField) throws UnsupportedInputTypeException, InvalidFieldValueException {
-        return 0;
+        return userInput;
     }
 
     @Override
     public String processTextualInput(String userInput, IFormField formField) throws UnsupportedInputTypeException, InvalidFieldValueException {
-        return null;
+        return userInput;
     }
 
     @Override
     public String processSecureInput(String userInput, IFormField formField) throws UnsupportedInputTypeException, InvalidFieldValueException {
-        return null;
+        return userInput;
     }
 }
