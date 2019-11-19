@@ -1,4 +1,6 @@
 package cz.ucl.logic.data.manager;
 
-public class CategoryManager {
+import cz.ucl.logic.data.manager.definition.ICategoryManager;
+
+public class CategoryManager implements ICategoryManager {
 }
