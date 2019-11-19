@@ -7,19 +7,14 @@ import cz.ucl.logic.exceptions.AlreadyLoggedInException;
 import cz.ucl.logic.exceptions.EmailAddressAlreadyUsedException;
 import cz.ucl.logic.exceptions.InvalidCredentialsException;
 import cz.ucl.logic.exceptions.NotLoggedInException;
-import sun.tools.tree.ThisExpression;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import java.math.BigInteger;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class UserService implements IUserService {
 
@@ -72,6 +67,9 @@ public class UserService implements IUserService {
         }
 
         String securePassword = this.computeSecureString(password);
+        User newUser = new User(email, username, securePassword);
+
+        this.registeredUsers.add(newUser);
     }
 
     @Override
