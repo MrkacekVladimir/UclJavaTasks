@@ -6,6 +6,18 @@ import cz.ucl.logic.app.entities.definition.ITask;
 import cz.ucl.logic.app.entities.definition.IUser;
 
 public class User implements IUser {
+
+    private int identifier;
+    private String email;
+    private String password;
+    private String username;
+
+    public User(String email, String username, String password ){
+        this.email = email;
+        this.username = username;
+        this.password = password;
+    }
+
     @Override
     public int getId() {
         return 0;
@@ -13,17 +25,17 @@ public class User implements IUser {
 
     @Override
     public String getEmail() {
-        return null;
+        return this.email;
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return this.username;
     }
 
     @Override
     public String getPassword() {
-        return null;
+        return this.password;
     }
 
     @Override

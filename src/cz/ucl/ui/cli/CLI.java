@@ -15,6 +15,7 @@ import cz.ucl.ui.definition.menu.IMenuOption;
 import cz.ucl.ui.definition.menu.MenuType;
 import cz.ucl.ui.definition.views.*;
 
+import javax.swing.*;
 import javax.swing.text.html.FormView;
 import java.io.Console;
 import java.util.*;
@@ -93,15 +94,23 @@ public class CLI implements ICLI {
         Console console = System.console();
         if (console != null) {
             return String.valueOf(console.readPassword(""));
-        }
-        else { // if secure input is not supported, fallback to the classic one
+        } else { // if secure input is not supported, fallback to the classic one
             return promptString();
         }
     }
 
     @Override
     public int promptOption(IMenu menu) {
-        return promptNumber();
+        int[] validOptions = menu.getValidOptionNumbers();
+        int input = this.promptNumber();
+
+        while(true){
+            if(this.isValidOption(input, validOptions)){
+                return input;
+            }
+
+            this.drawError("Neplatné číslo výběru.");
+        }
     }
     //endregion
 
@@ -154,7 +163,7 @@ public class CLI implements ICLI {
 
     @Override
     public IMenuView getMenuView() {
-        return null;
+        return new MenuView();
     }
     //endregion
 
@@ -203,8 +212,10 @@ public class CLI implements ICLI {
         }
     }
 
-    private IMenuOption handleOptions(IMenu menu){
-        return null;
+    private IMenuOption handleOptions(IMenu menu) {
+        this.drawPrompt("Zadejte číslo výběru: ");
+        int optionNumber = this.promptOption(menu);
+        return menu.getOptionForNumber(optionNumber);
     }
 
     private IMenu handleMenuForOption(IMenu currentMenu, IMenuOption selectedOption) {
@@ -252,7 +263,7 @@ public class CLI implements ICLI {
         return nextMenu;
     }
 
-    private Map<String, String> handleForm(IMenu menu){
+    private Map<String, String> handleForm(IMenu menu) {
         //TODO
         return null;
     }
@@ -261,7 +272,10 @@ public class CLI implements ICLI {
     //endregion
 
     //region Utilities
-    /** Checks if validOptions contains testedOption */
+
+    /**
+     * Checks if validOptions contains testedOption
+     */
     private boolean isValidOption(int testedOption, int[] validOptions) {
         return IntStream.of(validOptions).anyMatch(x -> x == testedOption);
     }

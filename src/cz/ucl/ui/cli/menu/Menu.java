@@ -9,6 +9,7 @@ import cz.ucl.ui.definition.menu.IMenu;
 import cz.ucl.ui.definition.menu.IMenuFactory;
 import cz.ucl.ui.definition.menu.IMenuOption;
 import cz.ucl.ui.definition.menu.MenuType;
+import cz.ucl.ui.definition.views.IMenuView;
 
 import javax.swing.text.html.Option;
 import java.util.*;
@@ -112,19 +113,9 @@ public abstract class Menu implements IMenu {
 
     @Override
     public String render() {
-        StringBuilder builder = new StringBuilder();
+        IMenuView view = this.ui.getMenuView();
 
-        builder.append(this.getTitle());
-
-
-        for( IMenuOption option : this.options ){
-            builder.append(option.getNumber());
-            builder.append(". ");
-            builder.append(option.getTitle());
-            builder.append(System.getProperty("line.separator"));
-        }
-
-        return builder.toString();
+        return view.formatMenu(this);
     }
 
     @Override
