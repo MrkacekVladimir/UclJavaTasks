@@ -13,8 +13,14 @@ public class CategoryMapper implements ICategoryMapper {
         this.factory = factory;
     }
 
+
     @Override
     public ICategory mapFromDao(CategoryDAO dao) {
+        return null;
+    }
+
+    @Override
+    public ICategory mapFromDao(CategoryDAO dao, boolean preventDeepMap) {
         return null;
     }
 
@@ -24,12 +30,27 @@ public class CategoryMapper implements ICategoryMapper {
     }
 
     @Override
+    public List<ICategory> mapFromDaoList(List<CategoryDAO> daoList, boolean preventDeepMap) {
+        return null;
+    }
+
+    @Override
     public CategoryDAO mapToDao(ICategory entity) {
         return null;
     }
 
     @Override
+    public CategoryDAO mapToDao(ICategory entity, boolean preventDeepMap) {
+        return null;
+    }
+
+    @Override
     public List<CategoryDAO> mapToDaoList(List<ICategory> entityList) {
+        return null;
+    }
+
+    @Override
+    public List<CategoryDAO> mapToDaoList(List<ICategory> entityList, boolean preventDeepMap) {
         return null;
     }
 }

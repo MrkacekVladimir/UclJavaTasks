@@ -15,6 +15,11 @@ public class UserMapper implements IUserMapper {
 
     @Override
     public IUser mapFromDao(UserDAO dao) {
+
+    }
+
+    @Override
+    public IUser mapFromDao(UserDAO dao, boolean preventDeepMap) {
         return null;
     }
 
@@ -24,12 +29,27 @@ public class UserMapper implements IUserMapper {
     }
 
     @Override
+    public List<IUser> mapFromDaoList(List<UserDAO> daoList, boolean preventDeepMap) {
+        return null;
+    }
+
+    @Override
     public UserDAO mapToDao(IUser entity) {
         return null;
     }
 
     @Override
+    public UserDAO mapToDao(IUser entity, boolean preventDeepMap) {
+        return null;
+    }
+
+    @Override
     public List<UserDAO> mapToDaoList(List<IUser> entityList) {
+        return null;
+    }
+
+    @Override
+    public List<UserDAO> mapToDaoList(List<IUser> entityList, boolean preventDeepMap) {
         return null;
     }
 }

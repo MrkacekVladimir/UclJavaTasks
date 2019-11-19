@@ -19,7 +19,17 @@ public class TaskMapper implements ITaskMapper {
     }
 
     @Override
+    public ITask mapFromDao(TaskDAO dao, boolean preventDeepMap) {
+        return null;
+    }
+
+    @Override
     public List<ITask> mapFromDaoList(List<TaskDAO> daoList) {
+        return null;
+    }
+
+    @Override
+    public List<ITask> mapFromDaoList(List<TaskDAO> daoList, boolean preventDeepMap) {
         return null;
     }
 
@@ -29,7 +39,17 @@ public class TaskMapper implements ITaskMapper {
     }
 
     @Override
+    public TaskDAO mapToDao(ITask entity, boolean preventDeepMap) {
+        return null;
+    }
+
+    @Override
     public List<TaskDAO> mapToDaoList(List<ITask> entityList) {
+        return null;
+    }
+
+    @Override
+    public List<TaskDAO> mapToDaoList(List<ITask> entityList, boolean preventDeepMap) {
         return null;
     }
 }
