@@ -15,7 +15,7 @@ public class TagMapper implements ITagMapper {
 
     @Override
     public ITag mapFromDao(TagDAO dao) {
-        return null;
+        return mapFromDao(dao, true);
     }
 
     @Override
@@ -25,7 +25,7 @@ public class TagMapper implements ITagMapper {
 
     @Override
     public List<ITag> mapFromDaoList(List<TagDAO> daoList) {
-        return null;
+        return mapFromDaoList(daoList, true);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class TagMapper implements ITagMapper {
 
     @Override
     public TagDAO mapToDao(ITag entity) {
-        return null;
+        return mapToDao(entity, true);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class TagMapper implements ITagMapper {
 
     @Override
     public List<TagDAO> mapToDaoList(List<ITag> entityList) {
-        return null;
+        return mapToDaoList(entityList, true);
     }
 
     @Override

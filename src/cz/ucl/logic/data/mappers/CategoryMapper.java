@@ -9,14 +9,14 @@ import java.util.List;
 public class CategoryMapper implements ICategoryMapper {
     private MapperFactory factory;
 
-    public CategoryMapper(MapperFactory factory){
+    public CategoryMapper(MapperFactory factory) {
         this.factory = factory;
     }
 
 
     @Override
     public ICategory mapFromDao(CategoryDAO dao) {
-        return null;
+        return mapFromDao(dao, true);
     }
 
     @Override
@@ -26,7 +26,7 @@ public class CategoryMapper implements ICategoryMapper {
 
     @Override
     public List<ICategory> mapFromDaoList(List<CategoryDAO> daoList) {
-        return null;
+        return mapFromDaoList(daoList, true);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class CategoryMapper implements ICategoryMapper {
 
     @Override
     public CategoryDAO mapToDao(ICategory entity) {
-        return null;
+        return mapToDao(entity, true);
     }
 
     @Override
@@ -46,7 +46,7 @@ public class CategoryMapper implements ICategoryMapper {
 
     @Override
     public List<CategoryDAO> mapToDaoList(List<ICategory> entityList) {
-        return null;
+        return mapToDaoList(entityList, true);
     }
 
     @Override

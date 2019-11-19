@@ -9,13 +9,13 @@ import java.util.List;
 public class TaskMapper implements ITaskMapper {
     private MapperFactory factory;
 
-    public TaskMapper(MapperFactory factory){
+    public TaskMapper(MapperFactory factory) {
         this.factory = factory;
     }
 
     @Override
     public ITask mapFromDao(TaskDAO dao) {
-        return null;
+        return mapFromDao(dao, true);
     }
 
     @Override
@@ -25,7 +25,7 @@ public class TaskMapper implements ITaskMapper {
 
     @Override
     public List<ITask> mapFromDaoList(List<TaskDAO> daoList) {
-        return null;
+        return mapFromDaoList(daoList, true);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class TaskMapper implements ITaskMapper {
 
     @Override
     public TaskDAO mapToDao(ITask entity) {
-        return null;
+        return mapToDao(entity);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class TaskMapper implements ITaskMapper {
 
     @Override
     public List<TaskDAO> mapToDaoList(List<ITask> entityList) {
-        return null;
+        return mapToDaoList(entityList, true);
     }
 
     @Override

@@ -15,7 +15,7 @@ public class UserMapper implements IUserMapper {
 
     @Override
     public IUser mapFromDao(UserDAO dao) {
-
+        return this.mapFromDao(dao, true);
     }
 
     @Override
@@ -25,7 +25,7 @@ public class UserMapper implements IUserMapper {
 
     @Override
     public List<IUser> mapFromDaoList(List<UserDAO> daoList) {
-        return null;
+        return mapFromDaoList(daoList, true);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class UserMapper implements IUserMapper {
 
     @Override
     public UserDAO mapToDao(IUser entity) {
-        return null;
+        return mapToDao(entity, true);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class UserMapper implements IUserMapper {
 
     @Override
     public List<UserDAO> mapToDaoList(List<IUser> entityList) {
-        return null;
+        return mapToDaoList(entityList, true);
     }
 
     @Override

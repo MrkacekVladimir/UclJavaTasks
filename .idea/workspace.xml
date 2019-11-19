@@ -2,44 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66d07a86-e330-4b9a-b88c-2cb0318036bb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/dao/TagDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/dao/TaskDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/dao/UserDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/manager/TagManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/manager/TaskManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/manager/UserManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/manager/definition/ITagManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/manager/definition/ITaskManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/manager/definition/IUserManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/mappers/CategoryMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/mappers/MapperFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/mappers/TagMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/mappers/TaskMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/mappers/UserMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/mappers/definition/ICategoryMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/mappers/definition/ITagMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/mappers/definition/ITaskMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/mappers/definition/IUserMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/menu/user/TaskListMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/views/FormView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/Tag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/Task.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/definition/ICategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/definition/ICategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/definition/ITag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/definition/ITag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/definition/ITask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/definition/ITask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/definition/IUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/definition/IUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/data/manager/CategoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/manager/CategoryManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/data/manager/definition/ICategoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/manager/definition/ICategoryManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/cli/CLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/CLI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/cli/forms/FormManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/forms/FormManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/cli/menu/MenuFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/menu/MenuFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/cli/menu/user/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/menu/user/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/cli/views/MenuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/views/MenuView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/definition/menu/IMenuFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/definition/menu/IMenuFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/data/mappers/CategoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/mappers/CategoryMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/data/mappers/TagMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/mappers/TagMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/data/mappers/TaskMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/mappers/TaskMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/data/mappers/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/mappers/UserMapper.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -144,7 +110,7 @@
       <workItem from="1572587740875" duration="559000" />
       <workItem from="1572589313793" duration="9305000" />
       <workItem from="1572773572163" duration="24000" />
-      <workItem from="1574086022005" duration="19070000" />
+      <workItem from="1574086022005" duration="19559000" />
     </task>
     <task id="LOCAL-00001" summary="Added idea files">
       <created>1572587873021</created>
@@ -188,7 +154,49 @@
       <option name="project" value="LOCAL" />
       <updated>1574148674354</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added mappers">
+      <created>1574164628620</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1574164628620</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Added entity attributes">
+      <created>1574164645797</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1574164645797</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Added DAO and Managers">
+      <created>1574164665008</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1574164665008</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Changes to UI logic">
+      <created>1574164681115</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1574164681115</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Changes to UserService">
+      <created>1574164690287</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1574164690287</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Generated methods from interfaces in Mappers">
+      <created>1574164831981</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1574164831981</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,7 +224,13 @@
     <MESSAGE value="Project is now buildable. Added few adjustments" />
     <MESSAGE value="Added Views" />
     <MESSAGE value="Added User service and started using Views" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added User service and started using Views" />
+    <MESSAGE value="Added mappers" />
+    <MESSAGE value="Added entity attributes" />
+    <MESSAGE value="Added DAO and Managers" />
+    <MESSAGE value="Changes to UI logic" />
+    <MESSAGE value="Changes to UserService" />
+    <MESSAGE value="Generated methods from interfaces in Mappers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Generated methods from interfaces in Mappers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
