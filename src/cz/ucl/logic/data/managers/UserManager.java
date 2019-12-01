@@ -21,5 +21,73 @@ public class UserManager implements IUserManager {
         this.managers = managers;
     }
 
-    // TODO
+    @Override
+    public IUser[] getAllUsers() {
+        IUser[] loadedCategories = new IUser[userDatabase.size()];
+
+        for (int i = 0; i < userDatabase.size(); i++) {
+            UserDAO dao = userDatabase.get(i);
+
+            loadedCategories[i] = mappers.getUserMapper().mapFromDAODeep(dao);
+        }
+
+        return loadedCategories;
+    }
+
+    @Override
+    public IUser getUserByEmail(String email) {
+        for (UserDAO userDAO : userDatabase) {
+            if (userDAO.getEmail().equals(email)) {
+                return mappers.getUserMapper().mapFromDAODeep(userDAO);
+            }
+        }
+
+        return null;
+    }
+
+    @Override
+    public IUser getUserById(int userId) {
+        for (UserDAO userDAO : userDatabase) {
+            if (userDAO.getId() == userId) {
+                return mappers.getUserMapper().mapFromDAODeep(userDAO);
+            }
+        }
+
+        return null;
+    }
+
+    @Override
+    public void createUser(IUser user) {
+        UserDAO dao = mappers.getUserMapper().mapToDAODeep(user);
+
+        this.userDatabase.add(dao);
+    }
+
+    @Override
+    public void updateUser(IUser user) {
+        int daoIndex = -1;
+        for (int i = 0; i < userDatabase.size(); i++) {
+            if (userDatabase.get(i).getId() == user.getId()) {
+                daoIndex = i;
+                break;
+            }
+        }
+
+        UserDAO newDao = mappers.getUserMapper().mapToDAODeep(user);
+
+        userDatabase.set(daoIndex, newDao);
+    }
+
+    @Override
+    public void deleteUserById(int userId) {
+        int daoIndex = -1;
+        for (int i = 0; i < userDatabase.size(); i++) {
+            if (userDatabase.get(i).getId() == userId) {
+                daoIndex = i;
+                break;
+            }
+        }
+
+        userDatabase.remove(daoIndex);
+    }
 }
