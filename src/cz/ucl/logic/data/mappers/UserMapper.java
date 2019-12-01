@@ -16,7 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class UserMapper implements IUserMapper {
-    MapperFactory factory;
+    private MapperFactory factory;
 
     public UserMapper(MapperFactory factory) {
         this.factory = factory;
@@ -71,20 +71,23 @@ public class UserMapper implements IUserMapper {
 
         List<ICategory> categoryEntities = Arrays.asList(entity.getCategories());
         List<CategoryDAO> categoryDaos = factory.getCategoryMapper().mapToDAOsShallow(categoryEntities);
+        List<CategoryDAO> categoryListRef = userDao.getCategories();
         for (CategoryDAO categoryDao : categoryDaos) {
-            userDao.getCategories().add(categoryDao);
+            categoryListRef.add(categoryDao);
         }
 
         List<ITag> tagEntities = Arrays.asList(entity.getTags());
         List<TagDAO> tagDaos = factory.getTagMapper().mapToDAOsShallow(tagEntities);
+        List<TagDAO> tagListRef = userDao.getTags();
         for (TagDAO tagDao : tagDaos) {
-            userDao.getTags().add(tagDao);
+            tagListRef.add(tagDao);
         }
 
         List<ITask> taskEntities = Arrays.asList(entity.getTasks());
         List<TaskDAO> taskDaos = factory.getTaskMapper().mapToDAOsShallow(taskEntities);
+        List<TaskDAO> taskListRef = userDao.getTasks();
         for (TaskDAO taskDao : taskDaos) {
-            userDao.getTasks().add(taskDao);
+            taskListRef.add(taskDao);
         }
 
         return userDao;

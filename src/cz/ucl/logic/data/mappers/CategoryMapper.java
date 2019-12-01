@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CategoryMapper implements ICategoryMapper {
-    MapperFactory factory;
+    private MapperFactory factory;
 
     public CategoryMapper(MapperFactory factory) {
         this.factory = factory;
@@ -65,8 +65,9 @@ public class CategoryMapper implements ICategoryMapper {
         List<ITask> taskEntities = Arrays.asList(entity.getTasks());
         List<TaskDAO> taskDaos = factory.getTaskMapper().mapToDAOsShallow(taskEntities);
 
+        List<TaskDAO> taskListRef = categoryDao.getTasks();
         for (TaskDAO taskDao : taskDaos) {
-            categoryDao.getTasks().add(taskDao);
+            taskListRef.add(taskDao);
         }
 
         return categoryDao;

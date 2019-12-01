@@ -16,7 +16,19 @@ public class Tag implements ITag {
     private Color color;
     private IUser user;
     private List<Tag> tags;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
     //endregion
+
+
+    public Tag(IUser user, int id, String title, Color color, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.user = user;
+        this.id = id;
+        this.title = title;
+        this.color = color;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 
     @Override
     public int getId() {

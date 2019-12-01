@@ -19,12 +19,17 @@ public class User implements IUser {
     private List<ICategory> categories;
     private List<ITask> tasks;
     private List<ITag> tags;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
     //endregion
 
-    public User(String email, String username, String password ){
+    public User(int id, String email, String username, String password, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.id = id;
         this.email = email;
         this.username = username;
         this.password = password;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     @Override
@@ -99,7 +104,7 @@ public class User implements IUser {
 
     @Override
     public LocalDateTime getCreatedAt() {
-        return null;
+        return this.createdAt;
     }
 
     @Override

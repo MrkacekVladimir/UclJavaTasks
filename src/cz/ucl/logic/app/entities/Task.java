@@ -23,6 +23,19 @@ public class Task implements ITask {
     private LocalDateTime updatedAt;
     //endregion
 
+    public Task(IUser user, int id,  String title, String note, boolean isDone, ICategory category, LocalDateTime dueDate, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.user = user;
+        this.id = id;
+        this.title = title;
+        this.note = note;
+        this.isDone = isDone;
+        this.category = category;
+        this.dueDate = dueDate;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+
     //region Getters
 
     @Override
@@ -99,11 +112,10 @@ public class Task implements ITask {
 
     @Override
     public void complete() {
-
+        this.isDone = true;
     }
 
     @Override
     public void reopen() {
-
     }
 }

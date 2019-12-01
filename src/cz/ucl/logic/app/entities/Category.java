@@ -18,6 +18,15 @@ public class Category implements ICategory {
     private List<ITask> tasks;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+
+    public Category(IUser user, int id, String title, Color color, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.user = user;
+        this.id = id;
+        this.title = title;
+        this.color = color;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
     //endregion
 
     @Override
