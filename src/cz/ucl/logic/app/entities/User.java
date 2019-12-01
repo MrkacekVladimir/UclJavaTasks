@@ -32,9 +32,15 @@ public class User implements IUser {
         this.updatedAt = updatedAt;
     }
 
+    public User(String email, String username, String securePassword) {
+        this.email = email;
+        this.username = username;
+        this.password = securePassword;
+    }
+
     @Override
     public int getId() {
-        return 0;
+        return this.id;
     }
 
     @Override
@@ -54,52 +60,52 @@ public class User implements IUser {
 
     @Override
     public ICategory[] getCategories() {
-        return new ICategory[0];
+        return this.categories.toArray(new ICategory[0]);
     }
 
     @Override
     public ICategory getCategory(int i) {
-        return null;
+        return this.categories.get(i);
     }
 
     @Override
     public void saveCategory(int i, ICategory category) {
-
+        this.categories.set(i, category);
     }
 
     @Override
     public void addCategory(ICategory category) {
-
+        this.categories.add(category);
     }
 
     @Override
     public int categoriesCount() {
-        return 0;
+        return this.categories.size();
     }
 
     @Override
     public ITag[] getTags() {
-        return new ITag[0];
+        return this.tags.toArray(new ITag[0]);
     }
 
     @Override
     public ITag getTag(int i) {
-        return null;
+        return this.tags.get(i);
     }
 
     @Override
     public void saveTag(int i, ITag tag) {
-
+        this.tags.set(i, tag);
     }
 
     @Override
     public void addTag(ITag tag) {
-
+        this.tags.add(tag);
     }
 
     @Override
     public int tagsCount() {
-        return 0;
+        return this.tags.size();
     }
 
     @Override
@@ -109,31 +115,31 @@ public class User implements IUser {
 
     @Override
     public LocalDateTime getUpdatedAt() {
-        return null;
+        return this.updatedAt;
     }
 
     @Override
     public ITask[] getTasks() {
-        return new ITask[0];
+        return this.tasks.toArray(new ITask[0]);
     }
 
     @Override
     public ITask getTask(int i) {
-        return null;
+        return this.tasks.get(i);
     }
 
     @Override
     public void saveTask(int i, ITask task) {
-
+        this.tasks.set(i, task);
     }
 
     @Override
     public void addTask(ITask task) {
-
+        this.tasks.add(task);
     }
 
     @Override
     public int tasksCount() {
-        return 0;
+        return this.tasks.size();
     }
 }

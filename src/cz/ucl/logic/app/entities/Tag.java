@@ -15,7 +15,7 @@ public class Tag implements ITag {
     private String title;
     private Color color;
     private IUser user;
-    private List<Tag> tags;
+    private List<ITask> tasks;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     //endregion
@@ -30,58 +30,68 @@ public class Tag implements ITag {
         this.updatedAt = updatedAt;
     }
 
+    public Tag(IUser user, String title) {
+        this(user, 0, title, Color.BLACK, LocalDateTime.now(), LocalDateTime.now());
+    }
+
+    public Tag(IUser user, String title, Color color) {
+        this(user, 0, title, color, LocalDateTime.now(), LocalDateTime.now());
+    }
+
     @Override
     public int getId() {
-        return 0;
+        return this.id;
     }
 
     @Override
     public IUser getUser() {
-        return null;
+        return this.user;
     }
 
     @Override
     public String getTitle() {
-        return null;
+        return this.title;
     }
 
     @Override
     public Color getColor() {
-        return null;
+        return this.color;
     }
 
     @Override
     public LocalDateTime getCreatedAt() {
-        return null;
+        return this.createdAt;
     }
 
     @Override
     public LocalDateTime getUpdatedAt() {
-        return null;
+        return this.updatedAt;
     }
 
     @Override
     public ITask[] getTasks() {
-        return new ITask[0];
+        ITask[] taskArray = new ITask[this.tasks.size()];
+
+        return this.tasks.toArray(taskArray);
     }
 
     @Override
     public ITask getTask(int i) {
-        return null;
+        return this.tasks.get(i);
     }
 
     @Override
     public void saveTask(int i, ITask task) {
-
+        this.tasks.set(i, task);
     }
 
     @Override
     public void addTask(ITask task) {
-
+        this.tasks.add(task);
     }
 
     @Override
     public int tasksCount() {
-        return 0;
+        return this.tasks.size();
     }
 }

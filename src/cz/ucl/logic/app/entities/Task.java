@@ -4,7 +4,9 @@ import cz.ucl.logic.app.entities.definition.ICategory;
 import cz.ucl.logic.app.entities.definition.ITag;
 import cz.ucl.logic.app.entities.definition.ITask;
 import cz.ucl.logic.app.entities.definition.IUser;
+import jdk.vm.ci.meta.Local;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -33,6 +35,18 @@ public class Task implements ITask {
         this.dueDate = dueDate;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+    }
+
+    public Task(IUser user, String title) {
+        this(user, 0, title, "", false, null, LocalDateTime.now(),LocalDateTime.now(), LocalDateTime.now() );
+    }
+
+    public Task(IUser user, String title, String note) {
+        this(user, 0, title, note, false, null, LocalDateTime.now(),LocalDateTime.now(), LocalDateTime.now() );
+    }
+
+    public Task(IUser user, String title, String note, ICategory category) {
+        this(user, 0, title, "", false, category, LocalDateTime.now(),LocalDateTime.now(), LocalDateTime.now() );
     }
 
 
@@ -85,29 +99,29 @@ public class Task implements ITask {
 
     @Override
     public ITag[] getTags() {
-        return new ITag[0];
+        return this.tags.toArray(new ITag[0]);
     }
 
     @Override
     public ITag getTag(int i) {
-        return null;
+        return this.tags.get(i);
     }
 
     //endregion
 
     @Override
     public void saveTag(int i, ITag tag) {
-
+        this.tags.set(i, tag);
     }
 
     @Override
     public void addTag(ITag tag) {
-
+        this.tags.add(tag);
     }
 
     @Override
     public int tagsCount() {
-        return 0;
+        return this.tags.size();
     }
 
     @Override

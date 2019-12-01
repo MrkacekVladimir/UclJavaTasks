@@ -27,6 +27,14 @@ public class Category implements ICategory {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
+
+    public Category(IUser user, String title) {
+        this(user, 0, title, Color.BLACK, LocalDateTime.now(),LocalDateTime.now());
+    }
+
+    public Category(IUser user, String title, Color color) {
+        this(user, 0, title, color, LocalDateTime.now(),LocalDateTime.now());
+    }
     //endregion
 
     @Override

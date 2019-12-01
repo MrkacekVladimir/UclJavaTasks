@@ -3,9 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="66d07a86-e330-4b9a-b88c-2cb0318036bb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/data/managers/TagManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/managers/TagManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/data/managers/TaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/managers/TaskManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/data/managers/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/managers/UserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/Tag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/services/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/services/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/services/TagService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/services/TagService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/services/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/services/TaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/services/UserService.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -210,7 +215,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575201502854</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Implemented managers">
+      <created>1575202554965</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1575202554965</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,7 +258,8 @@
     <MESSAGE value="Generated methods from interfaces in Mappers" />
     <MESSAGE value="Added setup for method without deepcloning" />
     <MESSAGE value="Implemented mappers" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented mappers" />
+    <MESSAGE value="Implemented managers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented managers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
