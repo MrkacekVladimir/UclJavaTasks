@@ -10,6 +10,8 @@ import cz.ucl.logic.app.services.TagService;
 import cz.ucl.logic.app.services.TaskService;
 import cz.ucl.logic.app.services.UserService;
 import cz.ucl.logic.app.services.definition.*;
+import cz.ucl.logic.data.managers.ManagerFactory;
+import cz.ucl.logic.data.mappers.MapperFactory;
 import cz.ucl.logic.exceptions.AlreadyLoggedInException;
 import cz.ucl.logic.exceptions.EmailAddressAlreadyUsedException;
 import cz.ucl.logic.exceptions.InvalidCredentialsException;
@@ -24,16 +26,22 @@ import cz.ucl.logic.exceptions.NotLoggedInException;
  * All xxxService attributes have to be private!
  */
 public class Program implements IAppLogic {
+    private MapperFactory mapperFactory;
+    private ManagerFactory managerFactory;
+
     private ICategoryService categoryService;
     private ITagService tagService;
     private ITaskService taskService;
     private IUserService userService;
 
     public Program() {
-        userService = new UserService();
-        categoryService = new CategoryService(userService);
-        tagService = new TagService(userService);
-        taskService = new TaskService(userService);
+        mapperFactory = new MapperFactory();
+        managerFactory = new ManagerFactory(mapperFactory);
+
+        userService = new UserService(managerFactory.getUserManager());
+        categoryService = new CategoryService(userService, managerFactory.getCategoryManager());
+        tagService = new TagService(userService, managerFactory.getTagManager());
+        taskService = new TaskService(userService, managerFactory.getTaskManager());
     }
 
     @Override

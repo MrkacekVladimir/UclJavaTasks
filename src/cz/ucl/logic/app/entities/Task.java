@@ -4,10 +4,9 @@ import cz.ucl.logic.app.entities.definition.ICategory;
 import cz.ucl.logic.app.entities.definition.ITag;
 import cz.ucl.logic.app.entities.definition.ITask;
 import cz.ucl.logic.app.entities.definition.IUser;
-import jdk.vm.ci.meta.Local;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Task implements ITask {
@@ -35,6 +34,8 @@ public class Task implements ITask {
         this.dueDate = dueDate;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+
+        this.tags = new ArrayList<>();
     }
 
     public Task(IUser user, String title) {

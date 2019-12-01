@@ -6,6 +6,7 @@ import cz.ucl.logic.app.entities.definition.ITask;
 import cz.ucl.logic.app.entities.definition.IUser;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -30,12 +31,14 @@ public class User implements IUser {
         this.password = password;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+
+        this.categories = new ArrayList<>();
+        this.tasks = new ArrayList<>();
+        this.tags = new ArrayList<>();
     }
 
     public User(String email, String username, String securePassword) {
-        this.email = email;
-        this.username = username;
-        this.password = securePassword;
+        this(0, email, username, securePassword, LocalDateTime.now(), LocalDateTime.now());
     }
 
     @Override

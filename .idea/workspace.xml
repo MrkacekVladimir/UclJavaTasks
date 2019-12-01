@@ -3,13 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="66d07a86-e330-4b9a-b88c-2cb0318036bb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/Program.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/Category.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/Tag.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/Task.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/services/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/services/CategoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/services/TagService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/services/TagService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/services/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/services/TaskService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/services/UserService.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -222,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575202554965</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Added services">
+      <created>1575208644619</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1575208644619</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,7 +264,8 @@
     <MESSAGE value="Added setup for method without deepcloning" />
     <MESSAGE value="Implemented mappers" />
     <MESSAGE value="Implemented managers" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented managers" />
+    <MESSAGE value="Added services" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added services" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -270,9 +276,19 @@
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/cz/ucl/ui/cli/CLI.java</url>
-          <line>126</line>
-          <option name="timeStamp" value="7" />
+          <url>file://$PROJECT_DIR$/src/cz/ucl/logic/app/services/UserService.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/cz/ucl/logic/data/managers/UserManager.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/cz/ucl/logic/data/mappers/UserMapper.java</url>
+          <line>69</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

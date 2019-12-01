@@ -19,7 +19,8 @@ public class UserService implements IUserService {
     }
 
     private IUser findUserByEmailAndPassword(String email, String password) {
-        for (IUser user : manager.getAllUsers()) {
+        IUser[] users = manager.getAllUsers();
+        for (IUser user : users ) {
             if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
                 return user;
             }

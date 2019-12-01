@@ -6,6 +6,7 @@ import cz.ucl.logic.app.entities.definition.ITask;
 import cz.ucl.logic.app.entities.definition.IUser;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Category implements ICategory {
@@ -26,6 +27,8 @@ public class Category implements ICategory {
         this.color = color;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+
+        this.tasks = new ArrayList<>();
     }
 
     public Category(IUser user, String title) {
