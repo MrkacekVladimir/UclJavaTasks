@@ -6,31 +6,31 @@ import cz.ucl.logic.data.mappers.definition.ITaskMapper;
 import cz.ucl.logic.data.mappers.definition.IUserMapper;
 
 public class MapperFactory {
-    private ICategoryMapper categoryMapper;
-    private ITagMapper tagMapper;
-    private ITaskMapper taskMapper;
-    private IUserMapper userMapper;
+    ICategoryMapper categoryMapper;
+    IUserMapper userMapper;
+    ITaskMapper taskMapper;
+    ITagMapper tagMapper;
 
-    public MapperFactory(){
+    public MapperFactory() {
         this.categoryMapper = new CategoryMapper(this);
-        this.tagMapper = new TagMapper(this);
-        this.taskMapper = new TaskMapper(this);
         this.userMapper = new UserMapper(this);
+        this.taskMapper = new TaskMapper(this);
+        this.tagMapper = new TagMapper(this);
     }
 
     public ICategoryMapper getCategoryMapper() {
         return categoryMapper;
     }
 
-    public ITagMapper getTagMapper() {
-        return tagMapper;
+    public IUserMapper getUserMapper() {
+        return userMapper;
     }
 
     public ITaskMapper getTaskMapper() {
         return taskMapper;
     }
 
-    public IUserMapper getUserMapper() {
-        return userMapper;
+    public ITagMapper getTagMapper() {
+        return tagMapper;
     }
 }

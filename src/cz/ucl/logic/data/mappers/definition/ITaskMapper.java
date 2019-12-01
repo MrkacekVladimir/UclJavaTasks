@@ -6,19 +6,11 @@ import cz.ucl.logic.data.dao.TaskDAO;
 import java.util.List;
 
 public interface ITaskMapper {
-    ITask mapFromDao(TaskDAO dao);
+    ITask mapFromDAOShallow(TaskDAO dao);
+    TaskDAO mapToDAOShallow(ITask entity);
+    ITask mapFromDAODeep(TaskDAO dao);
+    TaskDAO mapToDAODeep(ITask entity);
 
-    ITask mapFromDao(TaskDAO dao, boolean preventDeepMap);
-
-    List<ITask> mapFromDaoList(List<TaskDAO> daoList);
-
-    List<ITask> mapFromDaoList(List<TaskDAO> daoList, boolean preventDeepMap);
-
-    TaskDAO mapToDao(ITask entity);
-
-    TaskDAO mapToDao(ITask entity, boolean preventDeepMap);
-
-    List<TaskDAO> mapToDaoList(List<ITask> entityList);
-
-    List<TaskDAO> mapToDaoList(List<ITask> entityList, boolean preventDeepMap);
+    List<ITask> mapFromDAOsShallow(List<TaskDAO> daos);
+    List<TaskDAO> mapToDAOsShallow(List<ITask> entities);
 }

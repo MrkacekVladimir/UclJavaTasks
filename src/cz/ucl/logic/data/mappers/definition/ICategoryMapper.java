@@ -6,19 +6,12 @@ import cz.ucl.logic.data.dao.CategoryDAO;
 import java.util.List;
 
 public interface ICategoryMapper {
-    ICategory mapFromDao(CategoryDAO dao);
+    ICategory mapFromDAOShallow(CategoryDAO dao);
+    CategoryDAO mapToDAOShallow(ICategory entity);
 
-    ICategory mapFromDao(CategoryDAO dao, boolean preventDeepMap);
+    ICategory mapFromDAODeep(CategoryDAO dao);
+    CategoryDAO mapToDAODeep(ICategory entity);
 
-    List<ICategory> mapFromDaoList(List<CategoryDAO> daoList);
-
-    List<ICategory> mapFromDaoList(List<CategoryDAO> daoList, boolean preventDeepMap);
-
-    CategoryDAO mapToDao(ICategory entity);
-
-    CategoryDAO mapToDao(ICategory entity, boolean preventDeepMap);
-
-    List<CategoryDAO> mapToDaoList(List<ICategory> entityList);
-
-    List<CategoryDAO> mapToDaoList(List<ICategory> entityList, boolean preventDeepMap);
+    List<ICategory> mapFromDAOsShallow(List<CategoryDAO> daos);
+    List<CategoryDAO> mapToDAOsShallow(List<ICategory> entities);
 }

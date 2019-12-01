@@ -6,19 +6,11 @@ import cz.ucl.logic.data.dao.UserDAO;
 import java.util.List;
 
 public interface IUserMapper {
-    IUser mapFromDao(UserDAO dao);
+    IUser mapFromDAOShallow(UserDAO dao);
+    UserDAO mapToDAOShallow(IUser entity);
+    IUser mapFromDAODeep(UserDAO dao);
+    UserDAO mapToDAODeep(IUser entity);
 
-    IUser mapFromDao(UserDAO dao, boolean preventDeepMap);
-
-    List<IUser> mapFromDaoList(List<UserDAO> daoList);
-
-    List<IUser> mapFromDaoList(List<UserDAO> daoList, boolean preventDeepMap);
-
-    UserDAO mapToDao(IUser entity);
-
-    UserDAO mapToDao(IUser entity, boolean preventDeepMap);
-
-    List<UserDAO> mapToDaoList(List<IUser> entityList);
-
-    List<UserDAO> mapToDaoList(List<IUser> entityList, boolean preventDeepMap);
+    List<IUser> mapFromDAOsShallow(List<UserDAO> daos);
+    List<UserDAO> mapToDAOsShallow(List<IUser> entities);
 }
