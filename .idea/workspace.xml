@@ -3,27 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="66d07a86-e330-4b9a-b88c-2cb0318036bb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/data/managers/CategoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/managers/CategoryManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/data/managers/TagManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/managers/TagManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/data/managers/TaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/managers/TaskManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/data/managers/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/managers/UserManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/data/managers/definition/ICategoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/managers/definition/ICategoryManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/data/managers/definition/ITagManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/managers/definition/ITagManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/data/managers/definition/ITaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/managers/definition/ITaskManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/data/managers/definition/IUserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/managers/definition/IUserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/Tag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/entities/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/services/TagService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/services/TagService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/app/services/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/app/services/TaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/logic/data/mappers/TaskMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/logic/data/mappers/TaskMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/cli/CLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/CLI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/cli/forms/FormField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/forms/FormField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/cli/forms/FormManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/forms/FormManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/cli/menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/menu/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/cli/menu/MenuFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/menu/MenuFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/cli/menu/user/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/menu/user/MainMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/cli/menu/user/TaskListMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/menu/user/TaskListMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/cli/views/CategoryView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/views/CategoryView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/cli/views/FormView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/views/FormView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/cli/views/MenuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/views/MenuView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/cli/views/TagView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/views/TagView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/definition/forms/FormFieldType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/definition/forms/FormFieldType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/definition/forms/IFormField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/definition/forms/IFormField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/cli/views/TaskView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/cli/views/TaskView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cz/ucl/ui/definition/menu/IMenuFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cz/ucl/ui/definition/menu/IMenuFactory.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -59,11 +48,12 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
@@ -131,6 +121,8 @@
       <workItem from="1572773572163" duration="24000" />
       <workItem from="1574086022005" duration="23262000" />
       <workItem from="1575353913794" duration="12196000" />
+      <workItem from="1575833707997" duration="131000" />
+      <workItem from="1575833850189" duration="4783000" />
     </task>
     <task id="LOCAL-00001" summary="Added idea files">
       <created>1572587873021</created>
@@ -251,7 +243,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575210869542</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="biiig changes">
+      <created>1575833740099</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1575833740099</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -290,7 +289,8 @@
     <MESSAGE value="Implemented managers" />
     <MESSAGE value="Added services" />
     <MESSAGE value="Added array list initiliazation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added array list initiliazation" />
+    <MESSAGE value="biiig changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="biiig changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -304,6 +304,11 @@
           <url>file://$PROJECT_DIR$/src/cz/ucl/logic/app/services/CategoryService.java</url>
           <line>45</line>
           <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/cz/ucl/logic/data/managers/TaskManager.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

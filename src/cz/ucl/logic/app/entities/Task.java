@@ -42,6 +42,10 @@ public class Task implements ITask {
         this(user, 0, title, "", false, null, LocalDateTime.now(),LocalDateTime.now(), LocalDateTime.now() );
     }
 
+    public Task(int id, IUser user, String title) {
+        this(user, id, title, "", false, null, LocalDateTime.now(),LocalDateTime.now(), LocalDateTime.now() );
+    }
+
     public Task(IUser user, String title, String note) {
         this(user, 0, title, note, false, null, LocalDateTime.now(),LocalDateTime.now(), LocalDateTime.now() );
     }

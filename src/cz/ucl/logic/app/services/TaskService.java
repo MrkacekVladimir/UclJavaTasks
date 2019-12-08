@@ -31,32 +31,32 @@ public class TaskService implements ITaskService {
 
     @Override
     public ITask[] searchTasksForKeyword(String keyword) {
-        // TODO
-        return new ITask[0];
+
+        return this.getAllTasks();
     }
 
     @Override
     public ITask[] getAllTasksByCategory(ICategory category) {
-        // TODO
-        return new ITask[0];
+
+        return this.getAllTasks();
     }
 
     @Override
     public ITask[] getAllTasksByTag(ITag tag) {
-        // TODO
-        return new ITask[0];
+
+        return this.getAllTasks();
     }
 
     @Override
     public ITask[] getAllTasksByTags(ITag[] tag) {
-        // TODO
-        return new ITask[0];
+
+        return this.getAllTasks();
     }
 
     @Override
     public ITask[] getAllTasksByTags(ITag[] tag, ICategory category) {
-        // TODO
-        return new ITask[0];
+
+        return this.getAllTasks();
     }
 
     @Override
@@ -81,7 +81,7 @@ public class TaskService implements ITaskService {
 
     @Override
     public void updateTask(int id, String title, Color color) {
-        // TODO
+        manager.updateTask(new Task(id, userService.getUserLoggedIn(), title));
     }
 
     @Override

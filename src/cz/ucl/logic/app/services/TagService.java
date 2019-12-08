@@ -39,11 +39,11 @@ public class TagService implements ITagService {
 
     @Override
     public void updateTag(int id, String title, Color color) {
-        // TODO
+        manager.updateTag(new Tag(id, userService.getUserLoggedIn(), title, color));
     }
 
     @Override
     public void destroyTag(int id) {
-        // TODO
+        manager.deleteTagByIdForUser(id, userService.getUserLoggedIn());
     }
 }

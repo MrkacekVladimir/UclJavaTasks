@@ -118,10 +118,13 @@ public class MenuFactory implements IMenuFactory {
 
                 IMenu tagMenu = ui.getMenuFactory().createTagsMenu(this);
                 IMenu categoryMenu = ui.getMenuFactory().createCategoriesMenu(this);
+                IMenu userMenu = ui.getMenuFactory().createUserMenu(this);
+
                 IMenu backMenu = ui.getMenuFactory().createBackMenu(this);
 
                 addOption(new MenuOption(nextOptionNumber(), tagMenu));
                 addOption(new MenuOption(nextOptionNumber(), categoryMenu));
+                addOption(new MenuOption(nextOptionNumber(), userMenu));
                 addOption(new MenuOption(nextOptionNumber(), backMenu));
             }
 
@@ -148,7 +151,7 @@ public class MenuFactory implements IMenuFactory {
                 IAppLogic logic = ui.getLogic();
                 IMenuFactory menuFactory = ui.getMenuFactory();
 
-                IMenu tasksListMenu = menuFactory.createTaskListMenu(this, logic.getAllTasks());
+                IMenu tasksListMenu = menuFactory.createTaskListMenu(this);
                 IMenu createTaskMenu = menuFactory.createNewTaskMenu(this);
                 IMenu backMenu = menuFactory.createBackMenu(this);
 
@@ -165,13 +168,13 @@ public class MenuFactory implements IMenuFactory {
     }
 
     @Override
-    public IMenu createTaskListMenu(IMenu parentMenu, ITask[] tasks) {
-        return new TaskListMenu(parentMenu, tasks, "taskList");
+    public IMenu createTaskListMenu(IMenu parentMenu) {
+        return new TaskListMenu(parentMenu, "taskList");
     }
 
     @Override
-    public IMenu createTaskDetailMenu(IMenu parentMenu, ITask task) {
-        return new Menu(parentMenu, "taskDetail", String.format("#%d - %s", task.getId(), task.getTitle())) {
+    public IMenu createTaskDetailMenu(IMenu parentMenu, int taskId) {
+        return new Menu(parentMenu, "taskDetail", String.format("Detail úkolu č. %d", taskId)) {
 
             @Override
             public MenuType getType() {
@@ -180,17 +183,20 @@ public class MenuFactory implements IMenuFactory {
 
             @Override
             protected void build() {
-                setDescription(String.format("Upravujete úkol #%d - '%s'", task.getId(), task.getTitle()));
-
                 IAppLogic logic = ui.getLogic();
+
+                ITask task = logic.getTaskById(taskId);
+                setDescription(String.format("Upravujete úkol #%d - '%s'", task.getId(), task.getTitle()));
 
                 ITaskView view = ui.getTaskView();
                 setDescription(view.formatTask(task));
 
-                IMenu updateMenu = ui.getMenuFactory().createUpdateTaskMenu(this, task);
+                IMenu updateMenu = ui.getMenuFactory().createUpdateTaskMenu(this, taskId);
+                IMenu deleteMenu = ui.getMenuFactory().createDeleteTaskMenu(this, taskId);
                 IMenu backMenu = ui.getMenuFactory().createBackMenu(this);
 
                 addOption(new MenuOption(nextOptionNumber(), updateMenu));
+                addOption(new MenuOption(nextOptionNumber(), deleteMenu));
                 addOption(new MenuOption(nextOptionNumber(), backMenu));
             }
         };
@@ -225,8 +231,8 @@ public class MenuFactory implements IMenuFactory {
     }
 
     @Override
-    public IMenu createUpdateTaskMenu(IMenu parentMenu, ITask task) {
-        return new FormMenu(parentMenu, "updateTask", String.format("Úprava úkolu - #%d", task.getId())) {
+    public IMenu createUpdateTaskMenu(IMenu parentMenu, int taskId) {
+        return new FormMenu(parentMenu, "updateTask", String.format("Úprava úkolu - #%d", taskId)) {
 
             @Override
             public MenuType getType() {
@@ -242,6 +248,33 @@ public class MenuFactory implements IMenuFactory {
             @Override
             protected void build() {
                 setDescription("Hodláte se přidat nový úkol.");
+
+                IMenu backMenu = ui.getMenuFactory().createBackMenu(this);
+                IMenu fillMenu = ui.getMenuFactory().createFillFormMenu(this);
+
+                addOption(new MenuOption(nextOptionNumber(), backMenu));
+                addOption(new MenuOption(nextOptionNumber(), fillMenu));
+            }
+        };
+    }
+
+    @Override
+    public IMenu createDeleteTaskMenu(IMenu parentMenu, int taskId) {
+        return new FormMenu(parentMenu, "deleteTask", "Smazat úkol") {
+
+            @Override
+            public MenuType getType() {
+                return MenuType.USER;
+            }
+
+            @Override
+            protected void defineForm() {
+                addFormField(new FormField("id", "Identifier", FormFieldType.HIDDEN, false, Integer.toString(taskId)));
+            }
+
+            @Override
+            protected void build() {
+                setDescription("Hodláte si smazat úkol.");
 
                 IMenu backMenu = ui.getMenuFactory().createBackMenu(this);
                 IMenu fillMenu = ui.getMenuFactory().createFillFormMenu(this);
@@ -269,7 +302,7 @@ public class MenuFactory implements IMenuFactory {
                 IAppLogic logic = ui.getLogic();
                 IMenuFactory menuFactory = ui.getMenuFactory();
 
-                IMenu categoryListMenu = menuFactory.createCategoryListMenu(this, logic.getAllCategories());
+                IMenu categoryListMenu = menuFactory.createCategoryListMenu(this);
                 IMenu createCategoryMenu = menuFactory.createNewCategoryMenu(this);
                 IMenu backMenu = menuFactory.createBackMenu(this);
 
@@ -286,7 +319,7 @@ public class MenuFactory implements IMenuFactory {
     }
 
     @Override
-    public IMenu createCategoryListMenu(IMenu parentMenu, ICategory[] categories) {
+    public IMenu createCategoryListMenu(IMenu parentMenu) {
         return new Menu(parentMenu, "categoryList", "Seznam kategorií") {
             @Override
             protected void build() {
@@ -297,8 +330,8 @@ public class MenuFactory implements IMenuFactory {
                 ICategoryView view = ui.getCategoryView();
                 IMenuFactory menuFactory = ui.getMenuFactory();
 
-                for (ICategory category : categories) {
-                    IMenu detailMenu = menuFactory.createCategoryDetailMenu(this, category);
+                for (ICategory category : this.logic.getAllCategories()) {
+                    IMenu detailMenu = menuFactory.createCategoryDetailMenu(this, category.getId());
                     addOption(new MenuOption(category.getId(), detailMenu));
                 }
 
@@ -315,8 +348,8 @@ public class MenuFactory implements IMenuFactory {
     }
 
     @Override
-    public IMenu createCategoryDetailMenu(IMenu parentMenu, ICategory category) {
-        return new Menu(parentMenu, "categoryDetail", String.format("#%d - %s", category.getId(), category.getTitle())) {
+    public IMenu createCategoryDetailMenu(IMenu parentMenu, int categoryId) {
+        return new Menu(parentMenu, "categoryDetail", String.format("Detail kategorie č. %d", categoryId)) {
 
             @Override
             public MenuType getType() {
@@ -329,13 +362,17 @@ public class MenuFactory implements IMenuFactory {
 
                 IAppLogic logic = ui.getLogic();
 
+                ICategory category = logic.getCategoryById(categoryId);
+
                 ICategoryView view = ui.getCategoryView();
                 setDescription(view.formatCategory(category));
 
-                IMenu updateMenu = ui.getMenuFactory().createUpdateCategoryMenu(this, category);
+                IMenu updateMenu = ui.getMenuFactory().createUpdateCategoryMenu(this, category.getId());
+                IMenu deleteMenu = ui.getMenuFactory().createDeleteCategoryMenu(this, category.getId());
                 IMenu backMenu = ui.getMenuFactory().createBackMenu(this);
 
                 addOption(new MenuOption(nextOptionNumber(), updateMenu));
+                addOption(new MenuOption(nextOptionNumber(), deleteMenu));
                 addOption(new MenuOption(nextOptionNumber(), backMenu));
             }
         };
@@ -370,7 +407,7 @@ public class MenuFactory implements IMenuFactory {
     }
 
     @Override
-    public IMenu createUpdateCategoryMenu(IMenu parentMenu, ICategory category) {
+    public IMenu createUpdateCategoryMenu(IMenu parentMenu, int categoryId) {
         return new FormMenu(parentMenu, "updateCategory", "Upravit kategorii") {
 
             @Override
@@ -380,7 +417,7 @@ public class MenuFactory implements IMenuFactory {
 
             @Override
             protected void defineForm() {
-                addFormField(new FormField("id", "Identifier", FormFieldType.HIDDEN, false, Integer.toString(category.getId())));
+                addFormField(new FormField("id", "Identifier", FormFieldType.HIDDEN, false, Integer.toString(categoryId)));
                 addFormField(new FormField("title", "Titulek", FormFieldType.TEXTUAL));
                 addFormField(new FormField("color", "Barva (RGB)", FormFieldType.TEXTUAL));
             }
@@ -388,6 +425,33 @@ public class MenuFactory implements IMenuFactory {
             @Override
             protected void build() {
                 setDescription("Hodláte se upravit kategorii.");
+
+                IMenu backMenu = ui.getMenuFactory().createBackMenu(this);
+                IMenu fillMenu = ui.getMenuFactory().createFillFormMenu(this);
+
+                addOption(new MenuOption(nextOptionNumber(), backMenu));
+                addOption(new MenuOption(nextOptionNumber(), fillMenu));
+            }
+        };
+    }
+
+    @Override
+    public IMenu createDeleteCategoryMenu(IMenu parentMenu, int categoryId) {
+        return new FormMenu(parentMenu, "deleteCategory", "Smazat kategorii") {
+
+            @Override
+            public MenuType getType() {
+                return MenuType.USER;
+            }
+
+            @Override
+            protected void defineForm() {
+                addFormField(new FormField("id", "Identifier", FormFieldType.HIDDEN, false, Integer.toString(categoryId)));
+            }
+
+            @Override
+            protected void build() {
+                setDescription("Hodláte si smazat kategorii.");
 
                 IMenu backMenu = ui.getMenuFactory().createBackMenu(this);
                 IMenu fillMenu = ui.getMenuFactory().createFillFormMenu(this);
@@ -414,7 +478,7 @@ public class MenuFactory implements IMenuFactory {
                 IAppLogic logic = ui.getLogic();
                 IMenuFactory menuFactory = ui.getMenuFactory();
 
-                IMenu tagListMenu = menuFactory.createTagListMenu(this, logic.getAllTags());
+                IMenu tagListMenu = menuFactory.createTagListMenu(this);
                 IMenu createTagMenu = menuFactory.createNewTagMenu(this);
                 IMenu backMenu = menuFactory.createBackMenu(this);
 
@@ -430,7 +494,7 @@ public class MenuFactory implements IMenuFactory {
     }
 
     @Override
-    public IMenu createTagListMenu(IMenu parentMenu, ITag[] tags) {
+    public IMenu createTagListMenu(IMenu parentMenu) {
         return new Menu(parentMenu, "tagList", "Seznam štítků") {
             @Override
             protected void build() {
@@ -443,8 +507,8 @@ public class MenuFactory implements IMenuFactory {
                 ITagView view = ui.getTagView();
                 IMenuFactory menuFactory = ui.getMenuFactory();
 
-                for (ITag tag : tags) {
-                    IMenu detailMenu = menuFactory.createTagDetailMenu(this, tag);
+                for (ITag tag : logic.getAllTags()) {
+                    IMenu detailMenu = menuFactory.createTagDetailMenu(this, tag.getId());
                     addOption(new MenuOption(tag.getId(), detailMenu));
                 }
 
@@ -461,8 +525,8 @@ public class MenuFactory implements IMenuFactory {
     }
 
     @Override
-    public IMenu createTagDetailMenu(IMenu parentMenu, ITag tag) {
-        return new Menu(parentMenu, "tagDetail", String.format("#%d - %s", tag.getId(), tag.getTitle())) {
+    public IMenu createTagDetailMenu(IMenu parentMenu, int tagId) {
+        return new Menu(parentMenu, "tagDetail", String.format("Detail štítku č. %d", tagId)) {
 
             @Override
             public MenuType getType() {
@@ -471,17 +535,20 @@ public class MenuFactory implements IMenuFactory {
 
             @Override
             protected void build() {
-                setDescription(String.format("Upravujete štítek #%d - '%s'", tag.getId(), tag.getTitle()));
-
                 IAppLogic logic = ui.getLogic();
+                ITag tag = logic.getTagById(tagId);
+
+                setDescription(String.format("Upravujete štítek #%d - '%s'", tag.getId(), tag.getTitle()));
 
                 ITagView view = ui.getTagView();
                 setDescription(view.formatTag(tag));
 
-                IMenu updateMenu = ui.getMenuFactory().createUpdateTagMenu(this, tag);
+                IMenu updateMenu = ui.getMenuFactory().createUpdateTagMenu(this, tag.getId());
+                IMenu deleteMenu = ui.getMenuFactory().createDeleteTagMenu(this, tag.getId());
                 IMenu backMenu = ui.getMenuFactory().createBackMenu(this);
 
                 addOption(new MenuOption(nextOptionNumber(), updateMenu));
+                addOption(new MenuOption(nextOptionNumber(), deleteMenu));
                 addOption(new MenuOption(nextOptionNumber(), backMenu));
             }
         };
@@ -516,7 +583,7 @@ public class MenuFactory implements IMenuFactory {
     }
 
     @Override
-    public IMenu createUpdateTagMenu(IMenu parentMenu, ITag tag) {
+    public IMenu createUpdateTagMenu(IMenu parentMenu, int tagId) {
         return new FormMenu(parentMenu, "updateTag", "Upravit") {
 
             @Override
@@ -526,6 +593,7 @@ public class MenuFactory implements IMenuFactory {
 
             @Override
             protected void defineForm() {
+                addFormField(new FormField("id", "Identifier", FormFieldType.HIDDEN, false, Integer.toString(tagId)));
                 addFormField(new FormField("title", "Titulek", FormFieldType.TEXTUAL));
                 addFormField(new FormField("color", "Barva (RGB)", FormFieldType.TEXTUAL));
             }
@@ -543,6 +611,33 @@ public class MenuFactory implements IMenuFactory {
         };
     }
 
+    @Override
+    public IMenu createDeleteTagMenu(IMenu parentMenu, int tagId) {
+        return new FormMenu(parentMenu, "deleteTag", "Smazat štítek") {
+
+            @Override
+            public MenuType getType() {
+                return MenuType.USER;
+            }
+
+            @Override
+            protected void defineForm() {
+                addFormField(new FormField("id", "Identifier", FormFieldType.HIDDEN, false, Integer.toString(tagId)));
+            }
+
+            @Override
+            protected void build() {
+                setDescription("Hodláte si smazat štítek.");
+
+                IMenu backMenu = ui.getMenuFactory().createBackMenu(this);
+                IMenu fillMenu = ui.getMenuFactory().createFillFormMenu(this);
+
+                addOption(new MenuOption(nextOptionNumber(), backMenu));
+                addOption(new MenuOption(nextOptionNumber(), fillMenu));
+            }
+        };
+    }
+
     //endregion
 
 
@@ -550,7 +645,84 @@ public class MenuFactory implements IMenuFactory {
 
     @Override
     public IMenu createUserMenu(IMenu parentMenu) {
-        return null;
+        return new Menu(parentMenu, "userMenu", "Administrace účtu") {
+            @Override
+            protected void build() {
+                setDescription(
+                        "Zde můžete upravovat nebo smazat svůj uživatelský účet."
+                );
+
+                IAppLogic logic = ui.getLogic();
+
+                IMenu changeUserPassword = ui.getMenuFactory().createChangeUserPasswordMenu(this);
+                IMenu deleteUserMenu = ui.getMenuFactory().createDeleteUserMenu(this);
+                IMenu backMenu = ui.getMenuFactory().createBackMenu(this);
+
+                addOption(new MenuOption(nextOptionNumber(), changeUserPassword));
+                addOption(new MenuOption(nextOptionNumber(), deleteUserMenu));
+                addOption(new MenuOption(nextOptionNumber(), backMenu));
+            }
+
+            @Override
+            public MenuType getType() {
+                return MenuType.USER;
+            }
+        };
+    }
+
+    @Override
+    public IMenu createChangeUserPasswordMenu(IMenu parentMenu) {
+        return new FormMenu(parentMenu, "changePassword", "Změnit heslo.") {
+
+            @Override
+            public MenuType getType() {
+                return MenuType.USER;
+            }
+
+            @Override
+            protected void defineForm() {
+                addFormField(new FormField("password", "Heslo", FormFieldType.TEXTUAL, true));
+                addFormField(new FormField("confirmation", "Potvrzení hesla", FormFieldType.TEXTUAL, true));
+            }
+
+            @Override
+            protected void build() {
+                setDescription("Hodláte si změnit uživatelské heslo.");
+
+                IMenu backMenu = ui.getMenuFactory().createBackMenu(this);
+                IMenu fillMenu = ui.getMenuFactory().createFillFormMenu(this);
+
+                addOption(new MenuOption(nextOptionNumber(), backMenu));
+                addOption(new MenuOption(nextOptionNumber(), fillMenu));
+            }
+        };
+    }
+
+    @Override
+    public IMenu createDeleteUserMenu(IMenu parentMenu) {
+        return new FormMenu(parentMenu, "deleteUser", "Smazat účet (GDPR).") {
+
+            @Override
+            public MenuType getType() {
+                return MenuType.USER;
+            }
+
+            @Override
+            protected void defineForm() {
+                addFormField(new FormField("confirmation", "Potvrzení", FormFieldType.HIDDEN));
+            }
+
+            @Override
+            protected void build() {
+                setDescription("Hodláte si kompletně smazat uživatelský účet.");
+
+                IMenu backMenu = ui.getMenuFactory().createBackMenu(this);
+                IMenu fillMenu = ui.getMenuFactory().createFillFormMenu(this);
+
+                addOption(new MenuOption(nextOptionNumber(), backMenu));
+                addOption(new MenuOption(nextOptionNumber(), fillMenu));
+            }
+        };
     }
 
     //endregion

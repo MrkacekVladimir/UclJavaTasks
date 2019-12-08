@@ -18,6 +18,11 @@ public class TaskView implements ITaskView {
 
     @Override
     public String formatTask(ITask task) {
-        return String.format("#%i - %n - %c", task.getId(), task.getTitle(), task.getCategory().getTitle());
+        String categoryTitle = "No category";
+        if(task.getCategory() != null){
+            categoryTitle = task.getCategory().getTitle();
+        }
+
+        return String.format("#%d - %s - %s", task.getId(), task.getTitle(), categoryTitle);
     }
 }

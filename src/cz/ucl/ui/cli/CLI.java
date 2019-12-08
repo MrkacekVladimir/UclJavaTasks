@@ -124,6 +124,7 @@ public class CLI implements ICLI {
                 actionRegister(fromMenu, formData);
                 break;
             case "newTask":
+                actionCreateNewTask(fromMenu, formData);
                 break;
             case "newTag":
                 actionCreateNewTag(fromMenu, formData);
@@ -136,6 +137,24 @@ public class CLI implements ICLI {
                 break;
             case "updateCategory":
                 actionUpdateCategory(fromMenu, formData);
+                break;
+            case "updateTask":
+                actionUpdateTask(fromMenu, formData);
+                break;
+            case "deleteTag":
+                actionDeleteTag(fromMenu, formData);
+                break;
+            case "deleteCategory":
+                actionDeleteCategory(fromMenu, formData);
+                break;
+            case "deleteTask":
+                actionDeleteTask(fromMenu, formData);
+                break;
+            case "changePassword":
+                actionChangePassword(fromMenu, formData);
+                break;
+            case "deleteUser":
+                actionDeleteUser(fromMenu);
                 break;
         }
     }
@@ -234,9 +253,16 @@ public class CLI implements ICLI {
     }
 
     private void actionUpdateTag(IMenu menu, Map<String, String> data) {
-        logic.createCategory(data.get("title"));
+        int id = Integer.parseInt(data.get("id"));
+        logic.updateTag(id, data.get("title"), Color.BLACK);
 
         drawMessage("Upravení štítku proběhlo úspěšně");
+    }
+
+    private void actionDeleteTag(IMenu menu, Map<String, String> data){
+        int id = Integer.parseInt(data.get("id"));
+        logic.destroyTag(id);
+        drawMessage("Smazání úkolu proběhlo úspěšně");
     }
 
     private void actionCreateNewCategory(IMenu menu, Map<String, String> data) {
@@ -250,7 +276,43 @@ public class CLI implements ICLI {
         drawMessage("Upravení kategorie proběhlo úspěšně");
     }
 
-    // TODO
+    private void actionDeleteCategory(IMenu menu, Map<String, String> data){
+        int id = Integer.parseInt(data.get("id"));
+        logic.destroyCategory(id);
+        drawMessage("Smazání úkolu proběhlo úspěšně");
+    }
+
+    private void actionCreateNewTask(IMenu menu, Map<String, String> data) {
+        logic.createTask(data.get("title"));
+        drawMessage("Vytvoření úkolu proběhlo úspěšně");
+    }
+
+    private void actionUpdateTask(IMenu menu, Map<String, String> data) {
+        int id = Integer.parseInt(data.get("id"));
+        logic.updateTask(id, data.get("title"), Color.BLACK);
+        drawMessage("Upravení úkolu proběhlo úspěšně");
+    }
+
+    private void actionDeleteTask(IMenu menu, Map<String, String> data){
+        int id = Integer.parseInt(data.get("id"));
+        logic.destroyTask(id);
+        drawMessage("Smazání úkolu proběhlo úspěšně");
+    }
+
+    private void actionChangePassword(IMenu menu, Map<String, String> data) {
+        int id = Integer.parseInt(data.get("id"));
+        String password = data.get("password");
+        drawMessage("Upravení úkolu proběhlo úspěšně");
+    }
+
+    private void actionDeleteUser(IMenu menu){
+        try {
+            logic.destroyUserLoggedIn();
+        } catch (NotLoggedInException e) {
+            e.printStackTrace();
+        }
+        drawMessage("Smazání uživatelského účtu proběhlo úspěšně");
+    }
     //endregion
 
     //region Handlers

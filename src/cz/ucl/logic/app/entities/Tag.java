@@ -33,6 +33,14 @@ public class Tag implements ITag {
         this.tasks = new ArrayList<>();
     }
 
+    public Tag(int id, IUser user, String title) {
+        this(user, id, title, Color.BLACK, LocalDateTime.now(), LocalDateTime.now());
+    }
+
+    public Tag(int id, IUser user, String title, Color color) {
+        this(user, id, title, color, LocalDateTime.now(), LocalDateTime.now());
+    }
+
     public Tag(IUser user, String title) {
         this(user, 0, title, Color.BLACK, LocalDateTime.now(), LocalDateTime.now());
     }

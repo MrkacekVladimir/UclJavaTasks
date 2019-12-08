@@ -21,31 +21,36 @@ public interface IMenuFactory {
 
     //region Tasks
     IMenu createTasksMenu(IMenu parentMenu);
-    IMenu createTaskListMenu(IMenu parentMenu, ITask[] tasks);
-    IMenu createTaskDetailMenu(IMenu parentMenu, ITask task);
+    IMenu createTaskListMenu(IMenu parentMenu);
+    IMenu createTaskDetailMenu(IMenu parentMenu, int taskId);
     IMenu createNewTaskMenu(IMenu parentMenu);
-    IMenu createUpdateTaskMenu(IMenu parentMenu, ITask task);
+    IMenu createUpdateTaskMenu(IMenu parentMenu, int taskId);
+    IMenu createDeleteTaskMenu(IMenu parentMenu, int taskId);
     //endregion
 
     //region Categories
     IMenu createCategoriesMenu(IMenu parentMenu);
-    IMenu createCategoryListMenu(IMenu parentMenu, ICategory[] categories);
-    IMenu createCategoryDetailMenu(IMenu parentMenu, ICategory category);
+    IMenu createCategoryListMenu(IMenu parentMenu);
+    IMenu createCategoryDetailMenu(IMenu parentMenu, int categoryId);
     IMenu createNewCategoryMenu(IMenu parentMenu);
-    IMenu createUpdateCategoryMenu(IMenu parentMenu, ICategory category);
+    IMenu createUpdateCategoryMenu(IMenu parentMenu, int categoryId);
+    IMenu createDeleteCategoryMenu(IMenu parentMenu, int categoryId);
     //endregion
 
     //region Tags
     IMenu createTagsMenu(IMenu parentMenu);
-    IMenu createTagListMenu(IMenu parentMenu, ITag[] tags);
-    IMenu createTagDetailMenu(IMenu parentMenu, ITag tag);
+    IMenu createTagListMenu(IMenu parentMenu);
+    IMenu createTagDetailMenu(IMenu parentMenu, int tagId);
     IMenu createNewTagMenu(IMenu parentMenu);
-    IMenu createUpdateTagMenu(IMenu parentMenu, ITag tagd);
+    IMenu createUpdateTagMenu(IMenu parentMenu, int tagId);
+    IMenu createDeleteTagMenu(IMenu parentMenu, int tagId);
     //endregion
 
     //region User
 
     IMenu createUserMenu(IMenu parentMenu);
+    IMenu createChangeUserPasswordMenu(IMenu parentMenu);
+    IMenu createDeleteUserMenu(IMenu parentMenu);
 
     //endregion
 }
