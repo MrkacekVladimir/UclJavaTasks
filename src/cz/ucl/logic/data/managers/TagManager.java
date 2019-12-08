@@ -52,12 +52,14 @@ public class TagManager implements ITagManager {
     }
 
     @Override
-    public void createTag(ITag tag) {
+    public ITag createTag(ITag tag) {
         List<TagDAO> userTags = getDAOsForUserLoggedIn(tag.getUser());
 
         TagDAO dao = mappers.getTagMapper().mapToDAODeep(tag);
-
+        dao.setId(this.getNextIdentifier(userTags));
         userTags.add(dao);
+
+        return mappers.getTagMapper().mapFromDAODeep(dao);
     }
 
     @Override
@@ -102,5 +104,14 @@ public class TagManager implements ITagManager {
         }
 
         return userTags;
+    }
+
+    private int getNextIdentifier(List<TagDAO> userTags) {
+        if(!userTags.isEmpty()){
+            TagDAO lastDao = userTags.get(userTags.size() - 1);
+            return lastDao.getId();
+        }
+
+        return 1;
     }
 }

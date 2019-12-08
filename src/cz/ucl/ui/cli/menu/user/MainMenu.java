@@ -61,12 +61,14 @@ public class MainMenu extends Menu {
         setDescription("Jste úspěšně přihlášen.");
 
         ITask[] allTasks = logic.getAllTasks();
-        IMenu allTasksMenu = ui.getMenuFactory().createTaskListMenu(this, allTasks, "Zobrazit všechny úkoly.");
+        IMenu allTasksMenu = ui.getMenuFactory().createTaskListMenu(this, allTasks);
 
+        IMenu settingsMenu = ui.getMenuFactory().createSettingsMenu(this);
         IMenu logoutMenu = ui.getMenuFactory().createLogoutMenu(this);
         IMenu quitMenu = ui.getMenuFactory().createQuitMenu(this);
 
         addOption(new MenuOption(nextOptionNumber(), allTasksMenu));
+        addOption(new MenuOption(nextOptionNumber(), settingsMenu));
         addOption(new MenuOption(nextOptionNumber(), logoutMenu));
         addOption(new MenuOption(nextOptionNumber(), quitMenu));
     }

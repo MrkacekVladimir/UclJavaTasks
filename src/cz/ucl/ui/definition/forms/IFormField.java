@@ -16,4 +16,7 @@ public interface IFormField {
 
     /** Returns true if field is required or false if it can be left empty */
     boolean getIsRequired();
+
+    /** Returns default value of the form field */
+    String getDefaultValue();
 }

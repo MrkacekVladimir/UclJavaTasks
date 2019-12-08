@@ -1,5 +1,6 @@
 package cz.ucl.ui.cli;
 
+import cz.ucl.logic.app.entities.definition.Color;
 import cz.ucl.logic.exceptions.AlreadyLoggedInException;
 import cz.ucl.logic.exceptions.EmailAddressAlreadyUsedException;
 import cz.ucl.logic.exceptions.InvalidCredentialsException;
@@ -115,12 +116,28 @@ public class CLI implements ICLI {
     //region Logic
     public void invokeAppLogic(IMenu fromMenu, Map<String, String> formData) {
         String identifier = fromMenu.getIdentifier();
-        if (identifier.equals("login")) {
-            actionLogin(fromMenu, formData);
-        } else if (identifier.equals("register")) {
-            actionRegister(fromMenu, formData);
+        switch (identifier) {
+            case "login":
+                actionLogin(fromMenu, formData);
+                break;
+            case "register":
+                actionRegister(fromMenu, formData);
+                break;
+            case "newTask":
+                break;
+            case "newTag":
+                actionCreateNewTag(fromMenu, formData);
+                break;
+            case "newCategory":
+                actionCreateNewCategory(fromMenu, formData);
+                break;
+            case "updateTag":
+                actionUpdateTag(fromMenu, formData);
+                break;
+            case "updateCategory":
+                actionUpdateCategory(fromMenu, formData);
+                break;
         }
-        // TODO
     }
 
     public void invokeAppLogic(IMenu fromMenu) {
@@ -209,6 +226,28 @@ public class CLI implements ICLI {
         } catch (EmailAddressAlreadyUsedException e) {
             drawError(e.getMessage());
         }
+    }
+
+    private void actionCreateNewTag(IMenu menu, Map<String, String> data) {
+        logic.createTag(data.get("title"));
+        drawMessage("Vytvoření štítku proběhlo úspěšně");
+    }
+
+    private void actionUpdateTag(IMenu menu, Map<String, String> data) {
+        logic.createCategory(data.get("title"));
+
+        drawMessage("Upravení štítku proběhlo úspěšně");
+    }
+
+    private void actionCreateNewCategory(IMenu menu, Map<String, String> data) {
+        logic.createCategory(data.get("title"), Color.BLACK);
+        drawMessage("Vytvoření štítku proběhlo úspěšně");
+    }
+
+    private void actionUpdateCategory(IMenu menu, Map<String, String> data) {
+        int id = Integer.parseInt(data.get("id"));
+        logic.updateCategory(id, data.get("title"), Color.BLACK);
+        drawMessage("Upravení kategorie proběhlo úspěšně");
     }
 
     // TODO

@@ -52,12 +52,14 @@ public class TaskManager implements ITaskManager {
     }
 
     @Override
-    public void createTask(ITask task) {
+    public ITask createTask(ITask task) {
         List<TaskDAO> userTasks = getDAOsForUserLoggedIn(task.getUser());
 
         TaskDAO dao = mappers.getTaskMapper().mapToDAODeep(task);
-
+        dao.setId(this.getNextIdentifier(userTasks));
         userTasks.add(dao);
+
+        return mappers.getTaskMapper().mapFromDAODeep(dao);
     }
 
     @Override
@@ -102,5 +104,15 @@ public class TaskManager implements ITaskManager {
         }
 
         return userTasks;
+    }
+
+
+    private int getNextIdentifier(List<TaskDAO> userTasks) {
+        if(!userTasks.isEmpty()){
+            TaskDAO lastDao = userTasks.get(userTasks.size() - 1);
+            return lastDao.getId();
+        }
+
+        return 1;
     }
 }

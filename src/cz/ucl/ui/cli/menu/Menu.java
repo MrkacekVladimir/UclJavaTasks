@@ -48,7 +48,7 @@ public abstract class Menu implements IMenu {
      */
     protected abstract void build();
 
-    protected void clearOptions(){
+    protected void clearOptions() {
         this.options.clear();
     }
 
@@ -109,10 +109,8 @@ public abstract class Menu implements IMenu {
 
     @Override
     public void initialize() {
-        if (!isBuilt) {
-            build();
-            isBuilt = true;
-        }
+        this.clearOptions();
+        build();
     }
 
     @Override
@@ -134,7 +132,7 @@ public abstract class Menu implements IMenu {
 
     @Override
     public boolean isSystemMenu() {
-         return this.getType() != MenuType.USER;
+        return this.getType() != MenuType.USER;
     }
 
     @Override

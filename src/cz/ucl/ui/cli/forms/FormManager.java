@@ -51,7 +51,10 @@ public class FormManager implements IFormManager {
 
         do {
             isValid = true;
-            System.out.print(form.renderFormField(formField));
+
+            if(formField.getType() != FormFieldType.HIDDEN){
+                System.out.print(form.renderFormField(formField));
+            }
 
             try {
                 if (formField.getType() == FormFieldType.TEXTUAL) {
@@ -63,7 +66,10 @@ public class FormManager implements IFormManager {
                 } else if (formField.getType() == FormFieldType.SECURE) {
                     value = ui.promptSecureString();
                     value = processSecureInput(value, formField);
-                } else {
+                } else if (formField.getType() == FormFieldType.HIDDEN) {
+                    value = formField.getDefaultValue();
+                }
+                else {
                     throw new RuntimeException("Form field type " + formField.getType() + " is not supported");
                 }
 

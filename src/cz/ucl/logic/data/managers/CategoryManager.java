@@ -6,13 +6,12 @@ import cz.ucl.logic.data.dao.CategoryDAO;
 import cz.ucl.logic.data.managers.definition.ICategoryManager;
 import cz.ucl.logic.data.mappers.MapperFactory;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class CategoryManager implements ICategoryManager {
-    /** Keys in the map will be emails of user who owns the category */
+    /**
+     * Keys in the map will be emails of user who owns the category
+     */
     private Map<String, List<CategoryDAO>> categoryDatabase;
     private MapperFactory mappers;
     private ManagerFactory managers;
@@ -49,19 +48,21 @@ public class CategoryManager implements ICategoryManager {
         return null;
     }
 
-    public void createCategory(ICategory category) {
+    public ICategory createCategory(ICategory category) {
         List<CategoryDAO> userCategories = getDAOsForUserLoggedIn(category.getUser());
 
         CategoryDAO dao = mappers.getCategoryMapper().mapToDAODeep(category);
-
+        dao.setId(this.getNextIdentifier(userCategories));
         userCategories.add(dao);
+
+        return mappers.getCategoryMapper().mapFromDAODeep(dao);
     }
 
     public void updateCategory(ICategory category) {
         List<CategoryDAO> userCategories = getDAOsForUserLoggedIn(category.getUser());
 
         int daoIndex = -1;
-        for(int i = 0; i < userCategories.size(); i++) {
+        for (int i = 0; i < userCategories.size(); i++) {
             if (userCategories.get(i).getId() == category.getId()) {
                 daoIndex = i;
                 break;
@@ -69,7 +70,6 @@ public class CategoryManager implements ICategoryManager {
         }
 
         CategoryDAO newDao = mappers.getCategoryMapper().mapToDAODeep(category);
-
         userCategories.set(daoIndex, newDao);
     }
 
@@ -97,5 +97,14 @@ public class CategoryManager implements ICategoryManager {
         }
 
         return userCategories;
+    }
+
+    private int getNextIdentifier(List<CategoryDAO> userCategories) {
+        if(!userCategories.isEmpty()){
+            CategoryDAO lastDao = userCategories.get(userCategories.size() - 1);
+            return lastDao.getId();
+        }
+
+        return 1;
     }
 }

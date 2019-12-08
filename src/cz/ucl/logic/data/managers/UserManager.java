@@ -57,10 +57,12 @@ public class UserManager implements IUserManager {
     }
 
     @Override
-    public void createUser(IUser user) {
+    public IUser createUser(IUser user) {
         UserDAO dao = mappers.getUserMapper().mapToDAODeep(user);
-
+        dao.setId(this.getNextIdentifier());
         this.userDatabase.add(dao);
+
+        return mappers.getUserMapper().mapFromDAODeep(dao);
     }
 
     @Override
@@ -89,5 +91,15 @@ public class UserManager implements IUserManager {
         }
 
         userDatabase.remove(daoIndex);
+    }
+
+
+    private int getNextIdentifier() {
+        if(!this.userDatabase.isEmpty()){
+            UserDAO lastDao = this.userDatabase.get(this.userDatabase.size() - 1);
+            return lastDao.getId();
+        }
+
+        return 1;
     }
 }

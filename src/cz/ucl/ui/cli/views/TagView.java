@@ -18,6 +18,6 @@ public class TagView implements ITagView {
 
     @Override
     public String formatTag(ITag tag) {
-        return String.format("#%i - %n - %c", tag.getId(), tag.getTitle(), tag.getColor());
+        return String.format("#%d - %s - %s", tag.getId(), tag.getTitle(), tag.getColor());
     }
 }

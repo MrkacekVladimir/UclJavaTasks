@@ -6,7 +6,7 @@ public interface IUserManager {
     IUser[] getAllUsers();
     IUser getUserByEmail(String email);
     IUser getUserById(int userId);
-    void createUser(IUser user);
+    IUser createUser(IUser user);
     void updateUser(IUser user);
     void deleteUserById(int userId);
 }

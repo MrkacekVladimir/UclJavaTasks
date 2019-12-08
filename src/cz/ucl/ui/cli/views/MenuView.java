@@ -19,8 +19,6 @@ public class MenuView implements IMenuView {
 
         builder.append(this.drawBreadcrumbs(menu));
         builder.append(this.drawNewLine());
-        builder.append(this.drawHeader(menu));
-        builder.append(this.drawNewLine());
         builder.append(this.drawDescription(menu));
         builder.append(this.drawNewLine());
         builder.append(this.drawOptions(menu));

@@ -19,6 +19,6 @@ public class CategoryView implements ICategoryView {
 
     @Override
     public String formatCategory(ICategory category) {
-        return String.format("#%i - %n - %c", category.getId(), category.getTitle(), category.getColor());
+        return String.format("#%d - %s - %s", category.getId(), category.getTitle(), category.getColor());
     }
 }

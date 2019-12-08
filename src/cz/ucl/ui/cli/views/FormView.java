@@ -8,9 +8,10 @@ public class FormView implements IFormView {
     public String formatFormField(IFormField field) {
         StringBuilder builder = new StringBuilder();
 
+        builder.append("Zadejte ");
         builder.append(field.getLabel());
         if(field.getIsRequired()){
-            builder.append(" (povinný)");
+            builder.append("*");
         }
         builder.append(':');
 
